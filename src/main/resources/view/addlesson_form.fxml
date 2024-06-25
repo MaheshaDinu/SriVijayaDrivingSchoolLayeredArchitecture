@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="730.0" prefWidth="1285.0" style="-fx-background-color: CDF5FD;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.drivingSchool.controller.AddLessonFormController">
+   <children>
+      <ImageView fitHeight="730.0" fitWidth="1285.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Remove-bg.ai_1715770285305.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="46.0" layoutY="49.0" text="Add Lesson">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="278.0" layoutY="173.0" text="Date">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="277.0" layoutY="252.0" text="Time">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="277.0" layoutY="346.0" text="Instructor">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="278.0" layoutY="430.0" text="Vehicle">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtDate" layoutX="278.0" layoutY="198.0" onKeyReleased="#txtDateReleaseOnAction" prefHeight="36.0" prefWidth="219.0" promptText="YYYY-MM-DD" />
+      <JFXComboBox fx:id="cmbTime" layoutX="278.0" layoutY="277.0" onAction="#cmbTimeOnAction" prefHeight="36.0" prefWidth="219.0" />
+      <JFXComboBox fx:id="cmbInstructor" layoutX="278.0" layoutY="371.0" onAction="#cmbInstructorOnAction" prefHeight="36.0" prefWidth="219.0" />
+      <JFXComboBox fx:id="cmbVehicle" layoutX="278.0" layoutY="462.0" onAction="#cmbVehicleOnAction" prefHeight="36.0" prefWidth="219.0" />
+      <JFXButton buttonType="RAISED" layoutX="352.0" layoutY="578.0" onAction="#btnAddLessonOnAction" prefHeight="75.0" prefWidth="247.0" style="-fx-background-color: #0077ff;" text="Add Lesson" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="lblDateErrorMsg" layoutX="278.0" layoutY="234.0" prefHeight="17.0" prefWidth="344.0" textFill="RED" />
+   </children>
+</AnchorPane>

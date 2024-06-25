@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="730.0" prefWidth="1285.0" style="-fx-background-color: CDF5FD;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.drivingSchool.controller.StudentRemoveFormController">
+   <children>
+      <ImageView fitHeight="730.0" fitWidth="1285.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Remove-bg.ai_1715770285305.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="362.0" layoutY="45.0" text="Remove Student">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNIC" layoutX="284.0" layoutY="195.0" onKeyReleased="#txtNICReleaseOnAction" prefHeight="66.0" prefWidth="367.0" promptText="Input NIC">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </TextField>
+      <JFXButton buttonType="RAISED" layoutX="345.0" layoutY="593.0" onAction="#btnRemoveOnAction" prefHeight="80.0" prefWidth="246.0" style="-fx-background-color: FC4100;" text="Remove" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="41.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="lblStudentName" layoutX="152.0" layoutY="305.0" prefHeight="27.0" prefWidth="356.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblVehicleClass" layoutX="152.0" layoutY="352.0" prefHeight="27.0" prefWidth="356.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

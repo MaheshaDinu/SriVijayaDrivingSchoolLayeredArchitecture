@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PaymentReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="62995e00-1710-4527-b03e-edaaca530c49">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+    s.first_name AS student_first_name,
+    s.last_name AS student_last_name,
+    p.amount AS last_payment_amount,
+    SUM(p_all.amount) AS total_payments,
+    vc.fee AS vehicle_class_fee,
+    (vc.fee - SUM(p_all.amount)) AS remaining_fee
+FROM 
+    payment p
+JOIN 
+    student s ON p.student_id = s.student_id
+JOIN 
+    vehicleClass vc ON s.vehicle_class_id = vc.vehicle_class_id
+JOIN 
+    payment p_all ON s.student_id = p_all.student_id
+WHERE 
+    p.payment_id = (SELECT MAX(payment_id) FROM payment)
+GROUP BY 
+    s.student_id, s.first_name, s.last_name, p.amount, vc.fee;]]>
+	</queryString>
+	<field name="student_first_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="first_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="student_first_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="student_last_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="last_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="student_last_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="last_payment_amount" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="last_payment_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="total_payments" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="total_payments"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_payments"/>
+	</field>
+	<field name="vehicle_class_fee" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="fee"/>
+		<property name="com.jaspersoft.studio.field.label" value="vehicle_class_fee"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vehicleclass"/>
+	</field>
+	<field name="remaining_fee" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="remaining_fee"/>
+		<property name="com.jaspersoft.studio.field.label" value="remaining_fee"/>
+	</field>
+	<group name="student_first_name">
+		<groupExpression><![CDATA[$F{student_first_name}]]></groupExpression>
+	</group>
+	<group name="student_last_name">
+		<groupExpression><![CDATA[$F{student_last_name}]]></groupExpression>
+	</group>
+	<group name="last_payment_amount">
+		<groupExpression><![CDATA[$F{last_payment_amount}]]></groupExpression>
+	</group>
+	<group name="total_payments">
+		<groupExpression><![CDATA[$F{total_payments}]]></groupExpression>
+	</group>
+	<group name="vehicle_class_fee">
+		<groupExpression><![CDATA[$F{vehicle_class_fee}]]></groupExpression>
+	</group>
+	<group name="remaining_fee">
+		<groupExpression><![CDATA[$F{remaining_fee}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="30" y="19" width="106" height="50" uuid="5f38a9f9-aac9-4410-b08b-0029191fbc2e"/>
+				<imageExpression><![CDATA["C:/Users/Mahesha Dinushan/IdeaProjects/SriVijayaDrivingSchool/src/main/resources/images/automobile-1300231_1280.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="-20" y="10" width="595" height="69" forecolor="#3741BF" uuid="fea27208-dc93-43b8-b324-a0ff56d0637e"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.5" lineColor="#030303"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sri Vijaya Driving School]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="170" y="10" width="240" height="30" uuid="283afb6e-67a1-4b74-a9ee-78f7b1b49f65"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Student Payment Receipt]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="30" width="100" height="30" uuid="e76597ce-638e-43ab-9a5a-964ff44e5b13">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fa880623-6508-4a95-8ade-36cc3c055caa"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Student]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="30" width="100" height="30" uuid="4969a762-d9fd-4e7f-9dfb-db36a6f2042c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c5c4ef08-6881-4c3f-a0d2-7bd834f0c8e3"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="30" width="100" height="30" uuid="298456f0-0f26-41d2-8f3b-368397b07500">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ef0436bc-11a6-4c46-b063-22344a462192"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Payment Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="30" width="100" height="30" uuid="47bdc983-efab-4990-80d0-be05192173fe">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e5ae2b4c-1744-4d66-9204-1a503d00d8ad"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Total Paid]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="30" width="100" height="30" uuid="9bac2fe3-90d5-43f9-95b5-b45212c4a276">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="62399e51-8257-4e22-bb9c-73a201957610"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Total Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="30" width="100" height="30" uuid="4805b1e9-42ab-4d0d-bbb0-0ebc18ea2295">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d95a9f6b-1679-4e03-b613-447247ead3f0"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Due Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="-20" y="0" width="100" height="30" uuid="89098092-1967-4d8b-91f9-a851089b8678">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fa880623-6508-4a95-8ade-36cc3c055caa"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{student_first_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="0" width="100" height="30" uuid="87ce6ca0-9341-4b72-b29c-c2b1187245b7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c5c4ef08-6881-4c3f-a0d2-7bd834f0c8e3"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{student_last_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="0" width="100" height="30" uuid="9adbdb51-f130-433f-a2eb-ca4a9b5006a7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ef0436bc-11a6-4c46-b063-22344a462192"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{last_payment_amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="100" height="30" uuid="2ee25f29-a122-4b6f-9b3e-c33808290f03">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e5ae2b4c-1744-4d66-9204-1a503d00d8ad"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_payments}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="0" width="100" height="30" uuid="6b1b0f83-1529-44bd-bf74-9179ff31f923">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="62399e51-8257-4e22-bb9c-73a201957610"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vehicle_class_fee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="100" height="30" uuid="55b44c25-9c8f-4820-b86a-d4285ce8cb0b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d95a9f6b-1679-4e03-b613-447247ead3f0"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{remaining_fee}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="2" width="593" height="50" uuid="40e1e05a-7ac0-4067-81f3-21a00cd6bd72"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thank you for choosing us!]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

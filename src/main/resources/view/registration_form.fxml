@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="740.0" prefWidth="1285.0" style="-fx-background-color: CDF5FD;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.drivingSchool.controller.RegistrationFormController">
+   <children>
+      <ImageView fitHeight="774.0" fitWidth="1296.0" layoutX="-1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Remove-bg.ai_1715770285305.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="538.0" fitWidth="1063.0" layoutX="71.0" layoutY="78.0" opacity="0.36" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/automobile-1300231_1280.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="409.0" layoutY="28.0" text="Create User Account">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="132.0" layoutY="265.0" text="First Name">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="131.0" layoutY="201.0" text="User Name">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="474.0" layoutY="265.0" text="Last Name">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="128.0" layoutY="344.0" text="Contact No:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="129.0" layoutY="411.0" text="Address">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="130.0" layoutY="472.0" text="Password">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUserName" layoutX="130.0" layoutY="222.0" prefHeight="25.0" prefWidth="296.0" promptText="User Name..." />
+      <TextField fx:id="txtFirstName" layoutX="130.0" layoutY="295.0" prefHeight="25.0" prefWidth="296.0" promptText="First Name..." />
+      <TextField fx:id="txtLastName" layoutX="474.0" layoutY="295.0" prefHeight="25.0" prefWidth="296.0" promptText="Last Name..." />
+      <TextField fx:id="txtContactNo" layoutX="128.0" layoutY="365.0" onKeyReleased="#txtContactNoReleasedOnAction" prefHeight="25.0" prefWidth="296.0" text="+94" />
+      <TextField fx:id="txtAddress" layoutX="130.0" layoutY="438.0" prefHeight="25.0" prefWidth="296.0" promptText="Address..." />
+      <TextField fx:id="txtPassword" layoutX="130.0" layoutY="504.0" prefHeight="25.0" prefWidth="296.0" promptText="Password...." />
+      <JFXButton buttonType="RAISED" layoutX="316.0" layoutY="599.0" onAction="#btnCreateOnAction" prefHeight="51.0" prefWidth="525.0" style="-fx-background-color: #00A9FF;" text="Create" textFill="WHITE">
+         <font>
+            <Font name="Ebrima Bold" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Shadow />
+         </effect>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="88.0" layoutY="691.0" onAction="#btnBackOnAction" style="-fx-background-color: FFDB5C;" text="BACK" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="lblContactNoErrorMsg" layoutX="131.0" layoutY="392.0" prefHeight="17.0" prefWidth="585.0" textFill="RED" />
+   </children>
+</AnchorPane>

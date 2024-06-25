@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.2.final using JasperReports Library version 6.21.2-8434a0bd7c3bbc37cbf916f2968d35e4b165821a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CustomerRegistrationReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7304cd85-3b75-4619-857f-2806bd8f0f4b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (2)"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+    s.first_name AS student_first_name,
+    s.last_name AS student_last_name,
+    vc.vehicle_class,
+    vc.fee,
+    p.amount AS payment_amount,
+    p.date AS payment_date,
+    (vc.fee - p.amount) AS remaining_fee
+FROM 
+    student s
+JOIN 
+    vehicleClass vc ON s.vehicle_class_id = vc.vehicle_class_id
+JOIN 
+    payment p ON s.student_id = p.student_id
+WHERE 
+    s.student_id = (SELECT MAX(student_id) FROM student);]]>
+	</queryString>
+	<field name="student_first_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="first_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="student_first_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="student_last_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="last_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="student_last_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="vehicle_class" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="vehicle_class"/>
+		<property name="com.jaspersoft.studio.field.label" value="vehicle_class"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vehicleclass"/>
+	</field>
+	<field name="fee" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="fee"/>
+		<property name="com.jaspersoft.studio.field.label" value="fee"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="vehicleclass"/>
+	</field>
+	<field name="payment_amount" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="payment_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="payment_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="date"/>
+		<property name="com.jaspersoft.studio.field.label" value="payment_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="remaining_fee" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="remaining_fee"/>
+		<property name="com.jaspersoft.studio.field.label" value="remaining_fee"/>
+	</field>
+	<group name="student_first_name">
+		<groupExpression><![CDATA[$F{student_first_name}]]></groupExpression>
+	</group>
+	<group name="student_last_name">
+		<groupExpression><![CDATA[$F{student_last_name}]]></groupExpression>
+	</group>
+	<group name="vehicle_class">
+		<groupExpression><![CDATA[$F{vehicle_class}]]></groupExpression>
+	</group>
+	<group name="fee">
+		<groupExpression><![CDATA[$F{fee}]]></groupExpression>
+	</group>
+	<group name="payment_amount">
+		<groupExpression><![CDATA[$F{payment_amount}]]></groupExpression>
+	</group>
+	<group name="payment_date">
+		<groupExpression><![CDATA[$F{payment_date}]]></groupExpression>
+	</group>
+	<group name="remaining_fee">
+		<groupExpression><![CDATA[$F{remaining_fee}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="10" width="595" height="69" forecolor="#3741BF" uuid="2868ea84-5daf-49df-a50e-bba481972452"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.5" lineColor="#030303"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sri Vijaya Driving School]]></text>
+			</staticText>
+			<image>
+				<reportElement x="30" y="19" width="106" height="50" uuid="584572b1-fbdd-4510-9893-5747158a39ea"/>
+				<imageExpression><![CDATA["C:/Users/Mahesha Dinushan/IdeaProjects/SriVijayaDrivingSchool/src/main/resources/images/automobile-1300231_1280.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement x="170" y="10" width="240" height="30" uuid="84471cf3-568a-426f-93c8-0d713e5ede8c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Student Registration Receipt]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="30" width="112" height="30" uuid="2bea264e-14d1-4ed3-bd4d-ffc2e7c26067">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="607884cf-f306-49c8-93f2-903f3b363bb5"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Full]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="30" width="100" height="30" uuid="bae3e231-7ca2-4c1e-ae44-bfae86e3512e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c1e6ac37-3a7e-4ba1-923a-8738ce07af48"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="30" width="100" height="30" uuid="2a214f54-ff13-4215-a6d7-97dd909d89fb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6c789f78-a779-41f2-8b7b-defa9dbc84d0"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Vehicle Class]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="30" width="100" height="30" uuid="be81ae74-db99-43af-964b-c4cbd59fbba3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="75386bd1-4d1f-4678-87c9-a36a4d74b90f"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Full Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="30" width="100" height="30" uuid="c5c17b9f-c330-4773-b24a-c15c80fae47e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9a428203-f52e-41ef-bb91-99513ccf6a83"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Initial Payment]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="30" width="93" height="30" uuid="6d73cdfe-e84c-4530-a949-2aa592156f60">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9b8b4cfd-7982-465b-b917-64fd37e7a7e9"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Remaining]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="-20" y="0" width="112" height="30" uuid="46ecddcf-b4e8-43dc-a833-d71e5aedd3d1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="607884cf-f306-49c8-93f2-903f3b363bb5"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{student_first_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="0" width="100" height="30" uuid="670011bf-c7cc-491f-97e4-fe1c3ef7934e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c1e6ac37-3a7e-4ba1-923a-8738ce07af48"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{student_last_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="0" width="100" height="30" uuid="ff96846c-d704-4fe1-80ce-c9ae84976446">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6c789f78-a779-41f2-8b7b-defa9dbc84d0"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vehicle_class}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="0" width="100" height="30" uuid="ba571965-e5ed-421d-8c7c-d025d4518ca7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="75386bd1-4d1f-4678-87c9-a36a4d74b90f"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="0" width="90" height="30" uuid="cdb41d52-5ce0-4137-bb83-eeb9de5d288c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9a428203-f52e-41ef-bb91-99513ccf6a83"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payment_amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="93" height="30" uuid="871e939b-144a-451b-82f5-a84df24e9972">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9b8b4cfd-7982-465b-b917-64fd37e7a7e9"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.5" lineStyle="Double"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{remaining_fee}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="2" width="593" height="50" uuid="77d6d73e-828c-49f2-976f-d369a1e0356e"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thank you for choosing us!]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="65" splitType="Stretch"/>
+	</summary>
+</jasperReport>
