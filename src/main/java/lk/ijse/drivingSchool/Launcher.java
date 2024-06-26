@@ -14,7 +14,7 @@ public class Launcher extends Application {
     }
     @Override
     public void start(Stage stage) throws IOException {
-        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/login_form.fxml"))));
+        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/lk/ijse/drivingSchool/view/login_form.fxml"))));
         stage.setTitle("Log in");
         stage.centerOnScreen();
         stage.show();

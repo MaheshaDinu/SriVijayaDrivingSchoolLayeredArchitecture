@@ -15,5 +15,5 @@ public interface UserDAO {
 
 
 
-    public  String getUserId(User user) ;
+    public  String getUserId(User user) throws SQLException;
 }

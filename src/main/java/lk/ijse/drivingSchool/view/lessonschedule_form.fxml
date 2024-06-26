@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="730.0" prefWidth="1285.0" style="-fx-background-color: CDF5FD;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.drivingSchool.controller.LessonScheduleFormController">
+   <children>
+      <ImageView fitHeight="730.0" fitWidth="1285.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../resources/images/Remove-bg.ai_1715770285305.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="26.0" layoutY="29.0" text="Lesson Shedule">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" contentDisplay="TOP" layoutX="116.0" layoutY="120.0" onAction="#btnAddLessonOnAction" prefHeight="111.0" prefWidth="244.0" style="-fx-background-color: #41B06E;" text="Add Lesson" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="74.0" fitWidth="72.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-add-64%20-%20Copy.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="TOP" layoutX="952.0" layoutY="120.0" onAction="#btnLessonRemoveOnAction" prefHeight="111.0" prefWidth="244.0" style="-fx-background-color: #FB6D48;" text="Remove" textAlignment="CENTER" textFill="#fffefe">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="74.0" fitWidth="72.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-remove-64%20(1)%20-%20Copy.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ScrollPane layoutX="30.0" layoutY="305.0" prefHeight="268.0" prefWidth="1238.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="269.0" prefWidth="1235.0">
+               <children>
+                  <TableView fx:id="tblLessonSchedule" layoutX="-3.0" prefHeight="268.0" prefWidth="1229.0">
+                    <columns>
+                      <TableColumn fx:id="colDate" prefWidth="230.0" text="Date" />
+                      <TableColumn fx:id="colTime" minWidth="0.0" prefWidth="308.0" text="Time" />
+                        <TableColumn fx:id="colInstructor" prefWidth="411.0" text="Instructor" />
+                        <TableColumn fx:id="colVehicle" prefWidth="277.0" text="Vehicle" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

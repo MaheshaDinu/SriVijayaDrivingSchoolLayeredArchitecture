@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="730.0" prefWidth="1285.0" style="-fx-background-color: CDF5FD;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.drivingSchool.controller.AddPaymentFormController">
+   <children>
+      <ImageView fitHeight="730.0" fitWidth="1285.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../resources/images/Remove-bg.ai_1715770285305.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="272.0" layoutY="50.0" text="Sri Viajya" textFill="#0077ff">
+         <font>
+            <Font name="Eras Demi ITC" size="41.0" />
+         </font>
+      </Label>
+      <Label layoutX="458.0" layoutY="57.0" text="Driving School" textFill="WHITE">
+         <font>
+            <Font name="Eras Demi ITC" size="30.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="67.0" fitWidth="158.0" layoutX="138.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../resources/images/automobile-1300231_1280.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="394.0" layoutY="109.0" text="Add Payment">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="138.0" layoutY="196.0" text="Amount">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="138.0" layoutY="270.0" text="Student NIC">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAmount" layoutX="155.0" layoutY="230.0" onKeyReleased="#txtAmountReleasedOnAction" prefHeight="27.0" prefWidth="227.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtStudentNIC" layoutX="138.0" layoutY="297.0" prefHeight="27.0" prefWidth="227.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <Label layoutX="125.0" layoutY="232.0" text="RS.">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="368.0" layoutY="340.0" onAction="#btnCheckOnAction" prefHeight="39.0" prefWidth="112.0" style="-fx-background-color: #41B06E;" text="Check" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="139.0" layoutY="418.0" text="Student Name :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="139.0" layoutY="445.0" text="Vehicle Class :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="139.0" layoutY="472.0" text="Date:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="139.0" layoutY="499.0" text="Amount:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblStudentName" layoutX="292.0" layoutY="418.0" prefHeight="27.0" prefWidth="268.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblVehicleClass" layoutX="260.0" layoutY="445.0" prefHeight="27.0" prefWidth="268.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDate" layoutX="190.0" layoutY="472.0" prefHeight="27.0" prefWidth="268.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAmount" layoutX="220.0" layoutY="499.0" prefHeight="27.0" prefWidth="268.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="382.0" layoutY="622.0" onAction="#btnAddPaymentOnAction" prefHeight="67.0" prefWidth="214.0" style="-fx-background-color: #0077ff;" text="Add Payment" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

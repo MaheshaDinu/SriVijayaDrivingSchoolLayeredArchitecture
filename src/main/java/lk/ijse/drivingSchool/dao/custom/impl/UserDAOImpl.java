@@ -45,21 +45,19 @@ public class UserDAOImpl implements UserDAO {
 
 
 
-    public  String getUserId(User user) {
+    public  String getUserId(User user) throws SQLException {
         String userId = null;
-        String sql ="select * from user where user_name = ?";
+        /*String sql ="select * from user where user_name = ?";
 
-        try {
+
             Connection connection = DbConnnection.getInstance().getConnection();
             PreparedStatement pstm = connection.prepareStatement(sql);
-            pstm.setObject(1,user.getUserName());
-            ResultSet resultSet = pstm.executeQuery();
+            pstm.setObject(1,user.getUserName());*/
+            ResultSet resultSet = SQLUtil.execute("select * from user where user_name = ?",user.getUserName());
             if (resultSet.next()){
                 userId = resultSet.getString("user_id");
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
         return userId;
     }
 }
