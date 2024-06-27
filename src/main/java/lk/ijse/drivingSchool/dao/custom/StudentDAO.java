@@ -17,7 +17,7 @@ public interface StudentDAO {
 
     public  boolean deleteStudentByNIC(String nic) throws SQLException ;
 
-    public  ResultSet getStudent(String nic) throws SQLException ;
+    public  Student getStudent(String nic) throws SQLException ;
 
 
     public  String getNextStudentId() throws SQLException ;

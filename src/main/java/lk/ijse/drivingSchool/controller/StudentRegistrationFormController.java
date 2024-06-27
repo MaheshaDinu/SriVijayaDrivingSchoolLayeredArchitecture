@@ -12,15 +12,17 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import lk.ijse.drivingSchool.API.API;
 import lk.ijse.drivingSchool.Db.DbConnnection;
-import lk.ijse.drivingSchool.Repository.StudentRegistrationRepo;
-import lk.ijse.drivingSchool.Repository.VehicleClassRepo;
+
+
 import lk.ijse.drivingSchool.dao.custom.UserDAO;
+import lk.ijse.drivingSchool.dao.custom.VehicleClassDAO;
 import lk.ijse.drivingSchool.dao.custom.impl.UserDAOImpl;
+import lk.ijse.drivingSchool.dao.custom.impl.VehicleClassDAOImpl;
 import lk.ijse.drivingSchool.dto.StudentDTO;
 import lk.ijse.drivingSchool.entity.Student;
 import lk.ijse.drivingSchool.entity.User;
-import lk.ijse.drivingSchool.model.Student;
-import lk.ijse.drivingSchool.model.User;
+
+
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -90,6 +92,7 @@ public class StudentRegistrationFormController {
     public ResultSet resultSet;
     public User user;
     UserDAO userDAO = new UserDAOImpl();
+    VehicleClassDAO vehicleClassDAO = new VehicleClassDAOImpl();
 
     @FXML
     public void initialize(User user, BorderPane borderPane){
@@ -248,8 +251,8 @@ public class StudentRegistrationFormController {
     }
 
     private String smsMessage(String firstname, String lastname, String initialPayment, String vehicleClassId, String userId) throws SQLException {
-        Double remaining = Double.parseDouble(VehicleClassRepo.getFee(vehicleClassId))-Double.parseDouble(initialPayment);
-        String msg ="Sri Vijaya Driving School! "+firstname+" "+lastname+" Vehicle Class: "+VehicleClassRepo.getVehicleClass(vehicleClassId)+" total fee Rs."+VehicleClassRepo.getFee(vehicleClassId)+" -"+resultSet.getString("first_name")+"-";
+        Double remaining = Double.parseDouble(vehicleClassDAO.getFee(vehicleClassId))-Double.parseDouble(initialPayment);
+        String msg ="Sri Vijaya Driving School! "+firstname+" "+lastname+" Vehicle Class: "+vehicleClassDAO.getVehicleClass(vehicleClassId)+" total fee Rs."+vehicleClassDAO.getFee(vehicleClassId)+" -"+resultSet.getString("first_name")+"-";
         return msg;
     }
 
@@ -258,7 +261,7 @@ public class StudentRegistrationFormController {
             ObservableList<String> obList = FXCollections.observableArrayList();
 
             try {
-                List<String> vehicleClassList = VehicleClassRepo.getAllVehicleClass();
+                List<String> vehicleClassList = vehicleClassDAO.getAllVehicleClass();
                 for (String vehicleClass : vehicleClassList) {
                     obList.add(vehicleClass);
                 }
@@ -273,7 +276,7 @@ public class StudentRegistrationFormController {
     @FXML
     void cmbVehicleClassOnAction(ActionEvent event) {
         String vehicleClass = cmbVehicleClass.getValue();
-        vehicleClassId =VehicleClassRepo.getId(vehicleClass);
+        vehicleClassId =vehicleClassDAO.getId(vehicleClass);
 
     }
 
