@@ -14,6 +14,8 @@ import lk.ijse.drivingSchool.API.API;
 import lk.ijse.drivingSchool.Db.DbConnnection;
 
 
+import lk.ijse.drivingSchool.bo.custom.Impl.StudentRegistrationBOImpl;
+import lk.ijse.drivingSchool.bo.custom.StudentRegistrationBO;
 import lk.ijse.drivingSchool.dao.custom.UserDAO;
 import lk.ijse.drivingSchool.dao.custom.VehicleClassDAO;
 import lk.ijse.drivingSchool.dao.custom.impl.UserDAOImpl;
@@ -91,8 +93,8 @@ public class StudentRegistrationFormController {
     public BorderPane borderPane;
     public ResultSet resultSet;
     public User user;
-    UserDAO userDAO = new UserDAOImpl();
-    VehicleClassDAO vehicleClassDAO = new VehicleClassDAOImpl();
+
+    StudentRegistrationBO studentRegistrationBO = new StudentRegistrationBOImpl();
 
     @FXML
     public void initialize(User user, BorderPane borderPane){
@@ -110,7 +112,7 @@ public class StudentRegistrationFormController {
 
     private void setUserId() {
         try {
-            userId = userDAO.getUserId(user);
+            userId = studentRegistrationBO.getUserId(user);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -141,7 +143,7 @@ public class StudentRegistrationFormController {
 
             boolean isSaved = false;
             try {
-                isSaved = StudentRegistrationRepo.studentRegistration(studentDTO, initialPayment, userId, vehicleClassId);
+                isSaved = studentRegistrationBO.studentRegistration(studentDTO, initialPayment, userId, vehicleClassId);
 
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Account Created!").show();
@@ -251,8 +253,8 @@ public class StudentRegistrationFormController {
     }
 
     private String smsMessage(String firstname, String lastname, String initialPayment, String vehicleClassId, String userId) throws SQLException {
-        Double remaining = Double.parseDouble(vehicleClassDAO.getFee(vehicleClassId))-Double.parseDouble(initialPayment);
-        String msg ="Sri Vijaya Driving School! "+firstname+" "+lastname+" Vehicle Class: "+vehicleClassDAO.getVehicleClass(vehicleClassId)+" total fee Rs."+vehicleClassDAO.getFee(vehicleClassId)+" -"+resultSet.getString("first_name")+"-";
+        Double remaining = Double.parseDouble(studentRegistrationBO.getFee(vehicleClassId))-Double.parseDouble(initialPayment);
+        String msg ="Sri Vijaya Driving School! "+firstname+" "+lastname+" Vehicle Class: "+studentRegistrationBO.getVehicleClass(vehicleClassId)+" total fee Rs."+studentRegistrationBO.getFee(vehicleClassId)+" -"+resultSet.getString("first_name")+"-";
         return msg;
     }
 
@@ -261,7 +263,7 @@ public class StudentRegistrationFormController {
             ObservableList<String> obList = FXCollections.observableArrayList();
 
             try {
-                List<String> vehicleClassList = vehicleClassDAO.getAllVehicleClass();
+                List<String> vehicleClassList = studentRegistrationBO.getAllVehicleClass();
                 for (String vehicleClass : vehicleClassList) {
                     obList.add(vehicleClass);
                 }
@@ -276,7 +278,11 @@ public class StudentRegistrationFormController {
     @FXML
     void cmbVehicleClassOnAction(ActionEvent event) {
         String vehicleClass = cmbVehicleClass.getValue();
-        vehicleClassId =vehicleClassDAO.getId(vehicleClass);
+        try {
+            vehicleClassId =studentRegistrationBO.getId(vehicleClass);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

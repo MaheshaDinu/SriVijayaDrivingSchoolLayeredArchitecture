@@ -1,6 +1,7 @@
 package lk.ijse.drivingSchool.dao.custom.impl;
 
 import lk.ijse.drivingSchool.Db.DbConnnection;
+import lk.ijse.drivingSchool.dao.SQLUtil;
 import lk.ijse.drivingSchool.dao.custom.VehicleClassDAO;
 
 import java.sql.Connection;
@@ -14,16 +15,15 @@ public class VehicleClassDAOImpl implements VehicleClassDAO {
     public  String getVehicleClass(String vehicleClassId) throws SQLException {
         String vehicleClass=null;
         ResultSet resultSet = null;
-        String sql = "select * from vehicleClass where vehicle_class_id = ?";
+        /*String sql = "select * from vehicleClass where vehicle_class_id = ?";
 
-        try {
+
             Connection connection = DbConnnection.getInstance().getConnection();
             PreparedStatement ptsm = connection.prepareStatement(sql);
-            ptsm.setObject(1,vehicleClassId);
-            resultSet = ptsm.executeQuery();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+            ptsm.setObject(1,vehicleClassId);*/
+            resultSet = SQLUtil.execute("select * from vehicleClass where vehicle_class_id = ?",vehicleClassId);
+
+
         if (resultSet.next()) {
             vehicleClass =resultSet.getString("vehicle_class");
         }
@@ -32,11 +32,11 @@ public class VehicleClassDAOImpl implements VehicleClassDAO {
     }
 
     public  List<String> getAllVehicleClass() throws SQLException {
-        String sql = "select * from vehicleClass";
+       /* String sql = "select * from vehicleClass";
 
         Connection connection = DbConnnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
+        PreparedStatement pstm = connection.prepareStatement(sql);*/
+        ResultSet resultSet = SQLUtil.execute("select * from vehicleClass");
 
         List<String> classList = new ArrayList<>();
         while (resultSet.next()){
@@ -45,37 +45,34 @@ public class VehicleClassDAOImpl implements VehicleClassDAO {
         return classList;
     }
 
-    public  String getId(String vehicleClass) {
+    public  String getId(String vehicleClass) throws SQLException {
         String id =null;
-        String sql = "select * from vehicleClass where vehicle_class =?";
-        try {
+        /*String sql = "select * from vehicleClass where vehicle_class =?";
+
             Connection connection =DbConnnection.getInstance().getConnection();
             PreparedStatement pstm =connection.prepareStatement(sql);
-            pstm.setObject(1,vehicleClass);
-            ResultSet resultSet =pstm.executeQuery();
+            pstm.setObject(1,vehicleClass);*/
+            ResultSet resultSet =SQLUtil.execute("select * from vehicleClass where vehicle_class =?",vehicleClass);
             if (resultSet.next()){
                 id = resultSet.getString("vehicle_class_id");
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
         return id;
     }
 
-    public  String getFee(String vehicleClassId) {
-        String sql = "select * from vehicleClass where vehicle_class_id = ?";
+    public  String getFee(String vehicleClassId) throws SQLException {
+
         String fee = "0";
-        try {
+       /* String sql = "select * from vehicleClass where vehicle_class_id = ?";
+
             Connection connection = DbConnnection.getInstance().getConnection();
             PreparedStatement ptsm = connection.prepareStatement(sql);
-            ptsm.setObject(1,vehicleClassId);
-            ResultSet resultSet = ptsm.executeQuery();
+            ptsm.setObject(1,vehicleClassId);*/
+            ResultSet resultSet = SQLUtil.execute("select * from vehicleClass where vehicle_class_id = ?",vehicleClassId);
             if (resultSet.next()){
                 fee = resultSet.getString("fee");
             }
             return fee;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 }

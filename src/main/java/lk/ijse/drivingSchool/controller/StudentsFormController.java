@@ -17,7 +17,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import lk.ijse.drivingSchool.dao.custom.StudentDAO;
+import lk.ijse.drivingSchool.dao.custom.VehicleClassDAO;
 import lk.ijse.drivingSchool.dao.custom.impl.StudentDAOImpl;
+import lk.ijse.drivingSchool.dao.custom.impl.VehicleClassDAOImpl;
 import lk.ijse.drivingSchool.entity.Student;
 import lk.ijse.drivingSchool.entity.User;
 
@@ -52,6 +54,7 @@ public class StudentsFormController {
 
     public BorderPane borderPane;
     StudentDAO studentDAO = new StudentDAOImpl();
+    VehicleClassDAO vehicleClassDAO = new VehicleClassDAOImpl();
 
 
 
@@ -96,7 +99,7 @@ public class StudentsFormController {
                 btnProfile.setTextFill(Color.WHITE);
                 btnProfile.setOnAction(event -> handleProfileButtonClick(s));
 
-                StudentTm studentTm = new StudentTm(id, NIC, s.getFullName(), VehicleClassRepo.getVehicleClass(vehicleClassId), btnProfile);
+                StudentTm studentTm = new StudentTm(id, NIC, s.getFullName(), vehicleClassDAO.getVehicleClass(vehicleClassId), btnProfile);
                 studentTmObservableList.add(studentTm);
             }
             tblStudentTable.setItems(studentTmObservableList);

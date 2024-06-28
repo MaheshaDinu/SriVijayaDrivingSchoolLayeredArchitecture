@@ -14,7 +14,7 @@ public interface VehicleClassDAO {
 
     public List<String> getAllVehicleClass() throws SQLException ;
 
-    public  String getId(String vehicleClass) ;
+    public  String getId(String vehicleClass) throws SQLException;
 
-    public  String getFee(String vehicleClassId) ;
+    public  String getFee(String vehicleClassId) throws SQLException;
 }
