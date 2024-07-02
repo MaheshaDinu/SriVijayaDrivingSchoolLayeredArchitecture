@@ -8,6 +8,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 
 
+import lk.ijse.drivingSchool.bo.custom.Impl.StudentRemoveBOImpl;
+import lk.ijse.drivingSchool.bo.custom.StudentRemoveBO;
 import lk.ijse.drivingSchool.dao.custom.StudentDAO;
 import lk.ijse.drivingSchool.dao.custom.VehicleClassDAO;
 import lk.ijse.drivingSchool.dao.custom.impl.StudentDAOImpl;
@@ -30,8 +32,7 @@ public class StudentRemoveFormController {
     private TextField txtNIC;
     public BorderPane borderPane;
 
-    StudentDAO studentDAO = new StudentDAOImpl();
-    VehicleClassDAO vehicleClassDAO = new VehicleClassDAOImpl();
+    StudentRemoveBO studentRemoveBO = new StudentRemoveBOImpl();
 
     @FXML
     void btnRemoveOnAction(ActionEvent event) {
@@ -44,7 +45,7 @@ public class StudentRemoveFormController {
 
         if(type.orElse(no) == yes) {
             try {
-                boolean isDeleted = studentDAO.deleteStudentByNIC(NIC);
+                boolean isDeleted = studentRemoveBO.delete(NIC);
                 if (isDeleted){
                     new Alert(Alert.AlertType.CONFIRMATION, "Student Deleted!").show();
                     txtNIC.setText("");
@@ -70,12 +71,12 @@ public class StudentRemoveFormController {
     void txtNICReleaseOnAction(KeyEvent event) {
         String NIC = txtNIC.getText();
         try {
-            Student student = studentDAO.getStudent(NIC);
+            Student student = studentRemoveBO.get(NIC);
             if (student!=null){
                 lblStudentName.setTextFill(Color.BLUE);
-                lblStudentName.setText(studentDAO.getStudentName(studentDAO.getStudentId(student.getNIC())));
+                lblStudentName.setText(studentRemoveBO.getName(studentRemoveBO.getId(student.getNIC())));
                 lblVehicleClass.setTextFill(Color.BLUE);
-                lblVehicleClass.setText(vehicleClassDAO.getVehicleClass(student.getVehicleClassId()));
+                lblVehicleClass.setText(studentRemoveBO.getVehicleClass(student.getVehicleClassId()));
             }
             else {
                 lblStudentName.setTextFill(Color.RED);
