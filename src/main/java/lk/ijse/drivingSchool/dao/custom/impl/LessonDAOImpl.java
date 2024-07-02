@@ -11,10 +11,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class LessonDAOImpl implements LessonDAO {
 
-    public  boolean saveLesson(Lesson lesson) throws SQLException {
+    @Override
+    public ArrayList<Lesson> getAll() throws SQLException {
+        return null;
+    }
+
+    public  boolean save(Lesson lesson) throws SQLException {
         /*String sql ="INSERT INTO  lesson (date, time, instructor_id, vehicle_id) VALUES(?,?,?,?)";
         Connection connection = DbConnnection.getInstance().getConnection();
         PreparedStatement pstm =connection.prepareStatement(sql);
@@ -24,6 +30,31 @@ public class LessonDAOImpl implements LessonDAO {
         pstm.setObject(4,lesson.getVehicleId());*/
 
         return SQLUtil.execute("INSERT INTO  lesson (date, time, instructor_id, vehicle_id) VALUES(?,?,?,?)",lesson.getDate(),lesson.getTime(),lesson.getInstructorId(),lesson.getVehicleId());
+    }
+
+    @Override
+    public boolean delete(String nic) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public Lesson get(String nic) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public String getNextId() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public String getName(String id) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public String getId(String NIC) throws SQLException {
+        return null;
     }
 
     public  Lesson getFutureLessons() throws SQLException {
@@ -60,7 +91,7 @@ public class LessonDAOImpl implements LessonDAO {
 
     }
 
-    public  boolean removeLesson(String date, String time) throws SQLException {
+    public  boolean delete(String date, String time) throws SQLException {
         /*String sql = "delete from lesson where date = ? and time = ?";
         Connection connection = DbConnnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);

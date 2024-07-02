@@ -10,9 +10,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UserDAOImpl implements UserDAO {
-    public  boolean saveUser(User user) throws SQLException {
+    @Override
+    public ArrayList<User> getAll() throws SQLException {
+        return null;
+    }
+
+    public  boolean save(User user) throws SQLException {
 
         /*String sql = "insert into user (user_name, password, first_name, last_name, contact_no, address)values(?,?,?,?,?,?)";
 
@@ -31,6 +37,31 @@ public class UserDAOImpl implements UserDAO {
 
 
 
+    }
+
+    @Override
+    public boolean delete(String nic) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public User get(String nic) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public String getNextId() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public String getName(String id) {
+        return null;
+    }
+
+    @Override
+    public String getId(String NIC) throws SQLException {
+        return null;
     }
 
     public  User userNameCheck(String userName) throws SQLException {

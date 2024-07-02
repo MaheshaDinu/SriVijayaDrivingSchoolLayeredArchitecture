@@ -42,7 +42,7 @@ public class VehicleDAOImpl implements VehicleDAO {
         return id;
     }
 
-    public  boolean saveVehicle(Vehicle vehicle) throws SQLException {
+    public  boolean save(Vehicle vehicle) throws SQLException {
         /*String sql = "INSERT INTO vehicle (license_plate,type, manufacturer, model, year, colour, transmission_type, fuel_type, availability) VALUES(?,?,?,?,?,?,?,?,?)";
         Connection connection =DbConnnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -75,7 +75,7 @@ public class VehicleDAOImpl implements VehicleDAO {
 
     }
 
-    public  ArrayList<Vehicle> getAllVehicles() throws SQLException {
+    public  ArrayList<Vehicle> getAll() throws SQLException {
         /*String sql = "select * from vehicle";
 
             Connection connection = DbConnnection.getInstance().getConnection();
@@ -90,7 +90,7 @@ public class VehicleDAOImpl implements VehicleDAO {
 
     }
 
-    public  boolean removeVehicle(String license) throws SQLException {
+    public  boolean delete(String license) throws SQLException {
         /*String sql = "delete from vehicle where license_number =?";
 
             Connection connection = DbConnnection.getInstance().getConnection();
@@ -100,7 +100,7 @@ public class VehicleDAOImpl implements VehicleDAO {
 
     }
 
-    public  Vehicle getVehicleFromLicense(String license) throws SQLException {
+    public  Vehicle get(String license) throws SQLException {
         Vehicle vehicle =null;
         /*String sql = "select * from vehicle where license_plate = ?";
 
@@ -114,5 +114,15 @@ public class VehicleDAOImpl implements VehicleDAO {
             }
             return vehicle;
 
+    }
+
+    @Override
+    public String getNextId() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public String getName(String id) {
+        return null;
     }
 }

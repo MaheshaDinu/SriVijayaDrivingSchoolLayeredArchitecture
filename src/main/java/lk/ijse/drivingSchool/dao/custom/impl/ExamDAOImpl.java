@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class ExamDAOImpl implements ExamDAO {
     public  Exam getNextPracticalExam() throws SQLException {
@@ -99,5 +100,40 @@ public class ExamDAOImpl implements ExamDAO {
         }
             return exam;
 
+    }
+
+    @Override
+    public ArrayList<Exam> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public boolean save(Exam entity) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public boolean delete(String nic) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public Exam get(String nic) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public String getNextId() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public String getName(String id) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public String getId(String NIC) throws SQLException {
+        return null;
     }
 }

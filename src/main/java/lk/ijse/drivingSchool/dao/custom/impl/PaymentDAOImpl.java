@@ -10,21 +10,27 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class PaymentDAOImpl implements PaymentDAO {
-    public  ResultSet getTotalIncome() throws SQLException {
+    public  String getTotalIncome() throws SQLException {
+        String totalIncome=null;
 
         /*String sql ="select sum(amount) as total_income from payment";
 
 
             Connection connection = DbConnnection.getInstance().getConnection();
             PreparedStatement ptsm = connection.prepareStatement(sql);*/
-        return SQLUtil.execute("select sum(amount) as total_income from payment");
+        ResultSet resultSet = SQLUtil.execute("select sum(amount) as total_income from payment");
+        if (resultSet.next()){
+            totalIncome = resultSet.getString("total_income");
+        }
+        return totalIncome;
 
 
     }
 
-    public  boolean savePayment(Payment payment) throws SQLException {
+    public  boolean save(Payment payment) throws SQLException {
         /*String sql = "INSERT INTO payment (amount, date, student_id, vehicle_class_id, user_id) VALUES (?,?,?,?,?)";
         Connection connection = DbConnnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -37,16 +43,47 @@ public class PaymentDAOImpl implements PaymentDAO {
         return SQLUtil.execute("INSERT INTO payment (amount, date, student_id, vehicle_class_id, user_id) VALUES (?,?,?,?,?)",payment.getAmount(),payment.getDate(),payment.getStudentId(),payment.getVehicleClassId(),payment.getUserId());
     }
 
-    public  ResultSet getAllPayments() throws SQLException {
+    @Override
+    public boolean delete(String nic) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public Payment get(String nic) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public String getNextId() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public String getName(String id) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public String getId(String NIC) throws SQLException {
+        return null;
+    }
+
+    public  ArrayList<Payment> getAll() throws SQLException {
+        ArrayList<Payment> payments = new ArrayList<>();
         /*String sql ="select * from payment";
 
             Connection connection =DbConnnection.getInstance().getConnection();
             PreparedStatement pstm = connection.prepareStatement(sql);*/
-        return SQLUtil.execute("select * from payment");
+        ResultSet resultSet = SQLUtil.execute("select * from payment");
+        while (resultSet.next()){
+            Payment p = new Payment(resultSet.getString("amount"),resultSet.getString("date"),resultSet.getString("student_id"),resultSet.getString("vehicle_class_id"),resultSet.getString("user_id"));
+            payments.add(p);
+        }
+        return payments;
 
     }
 
-    public  boolean removePayment(String date, String studentId, String amount) throws SQLException {
+    public  boolean delete(String date, String studentId, String amount) throws SQLException {
         /*String sql ="delete from payment where date =? and student_id =? and amount =?";
 
             Connection connection = DbConnnection.getInstance().getConnection();

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InstructorDAOImpl implements InstructorDAO {
-    public  ArrayList<Instructor> getAllInstructors() throws SQLException {
+    public  ArrayList<Instructor> getAll() throws SQLException {
 
 
 
@@ -59,7 +59,7 @@ public class InstructorDAOImpl implements InstructorDAO {
         return id;
     }
 
-    public  boolean saveInstructor(Instructor instructor) throws SQLException {
+    public  boolean save(Instructor instructor) throws SQLException {
         /*String sql ="INSERT INTO instructor (first_name, last_name, license_number, contact_no) VALUES (?,?,?,?)";
         Connection connection = DbConnnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -88,7 +88,7 @@ public class InstructorDAOImpl implements InstructorDAO {
 
     }
 
-    public  boolean removeInstructor(String license) throws SQLException {
+    public  boolean delete(String license) throws SQLException {
         /*String sql ="delete from instructor where license_number = ?";
 
             Connection connection =DbConnnection.getInstance().getConnection();
@@ -98,7 +98,7 @@ public class InstructorDAOImpl implements InstructorDAO {
 
     }
 
-    public  Instructor getInstructorFromLicense(String license) throws SQLException {
+    public  Instructor get(String license) throws SQLException {
         /*String sql = "select * from instructor where license_number = ?";
 
 
@@ -108,5 +108,15 @@ public class InstructorDAOImpl implements InstructorDAO {
             ResultSet resultSet = SQLUtil.execute("select * from instructor where license_number = ?",license);
             return new Instructor(resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("license_number"),resultSet.getString("contact_no"));
 
+    }
+
+    @Override
+    public String getNextId() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public String getName(String id) throws SQLException {
+        return null;
     }
 }

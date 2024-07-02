@@ -1,6 +1,7 @@
 package lk.ijse.drivingSchool.dao.custom;
 
 import lk.ijse.drivingSchool.Db.DbConnnection;
+import lk.ijse.drivingSchool.dao.CrudDAO;
 import lk.ijse.drivingSchool.dao.SQLUtil;
 import lk.ijse.drivingSchool.entity.Exam;
 
@@ -10,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-public interface ExamDAO {
+public interface ExamDAO extends CrudDAO<Exam> {
     public Exam getNextPracticalExam() throws SQLException ;
 
     public  Exam getNextWrittenExam() throws SQLException ;

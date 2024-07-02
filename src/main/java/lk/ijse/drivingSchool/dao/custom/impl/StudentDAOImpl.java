@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class StudentDAOImpl implements StudentDAO {
-    public  ArrayList<Student> getAllStudents() throws SQLException {
+    public  ArrayList<Student> getAll() throws SQLException {
 
         ResultSet resultSet =null;
         ArrayList<Student> students = new ArrayList<>();
@@ -38,8 +38,8 @@ public class StudentDAOImpl implements StudentDAO {
 
     }
 
-    public  boolean saveStudent(Student student) throws SQLException {
-        String sql = "INSERT INTO student (NIC, first_name, last_name, height, weight_kg, date_of_birth, blood_group, contact_no, address, user_id, vehicle_class_id) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+    public  boolean save(Student student) throws SQLException {
+        /*String sql = "INSERT INTO student (NIC, first_name, last_name, height, weight_kg, date_of_birth, blood_group, contact_no, address, user_id, vehicle_class_id) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 
             Connection connection = DbConnnection.getInstance().getConnection();
             PreparedStatement pstm =connection.prepareStatement(sql);
@@ -53,29 +53,29 @@ public class StudentDAOImpl implements StudentDAO {
             pstm.setObject(8,student.getContactNo());
             pstm.setObject(9,student.getAddress());
             pstm.setObject(10,student.getUserId());
-            pstm.setObject(11,student.getVehicleClassId());
+            pstm.setObject(11,student.getVehicleClassId());*/
 
-            return pstm.executeUpdate()>0;
+            return SQLUtil.execute("INSERT INTO student (NIC, first_name, last_name, height, weight_kg, date_of_birth, blood_group, contact_no, address, user_id, vehicle_class_id) VALUES(?,?,?,?,?,?,?,?,?,?,?)",student.getNIC(),student.getFirstName(),student.getLastName(),student.getHeight(),student.getWeight(),student.getDateOfBirth(),student.getBloodGroup(),student.getContactNo(),student.getAddress(),student.getUserId(),student.getVehicleClassId());
 
     }
 
-    public  boolean deleteStudentByNIC(String nic) throws SQLException {
-        String sql = "delete from student where NIC = ?";
+    public  boolean delete(String nic) throws SQLException {
+       /* String sql = "delete from student where NIC = ?";
 
         Connection connection = DbConnnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setObject(1,nic);
-        return pstm.executeUpdate()>0;
+        pstm.setObject(1,nic);*/
+        return SQLUtil.execute("delete from student where NIC = ?",nic);
     }
 
-    public  Student getStudent(String nic) throws SQLException {
-        String sql ="select * from student where NIC = ?";
+    public  Student get(String nic) throws SQLException {
+        /*String sql ="select * from student where NIC = ?";
         Connection connection = null;
 
             connection = DbConnnection.getInstance().getConnection();
             PreparedStatement pstm = connection.prepareStatement(sql);
-            pstm.setObject(1,nic);
-            ResultSet resultSet = pstm.executeQuery();
+            pstm.setObject(1,nic);*/
+            ResultSet resultSet = SQLUtil.execute("select * from student where NIC = ?",nic);
             Student student = null;
             if (resultSet.next()){
                 student =new Student(resultSet.getString("NIC"),resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("height"),resultSet.getString("weight"),resultSet.getString("date_of_birth"),resultSet.getString("blood_group"),resultSet.getString("contact_no"),resultSet.getString("address"),resultSet.getString("user_id"),resultSet.getString("vehicle_class_id"));
@@ -87,13 +87,13 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
 
-    public  String getNextStudentId() throws SQLException {
+    public  String getNextId() throws SQLException {
         String nextId =null;
 
-        String sql = "select student_id from student order by student_id desc limit 1";
+        /*String sql = "select student_id from student order by student_id desc limit 1";
         Connection connection = DbConnnection.getInstance().getConnection();
-        PreparedStatement pstm = connection.prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
+        PreparedStatement pstm = connection.prepareStatement(sql);*/
+        ResultSet resultSet = SQLUtil.execute("select student_id from student order by student_id desc limit 1");
         if (resultSet.next()){
             nextId = resultSet.getString("student_id");
 
@@ -102,47 +102,45 @@ public class StudentDAOImpl implements StudentDAO {
 
     }
 
-    public  String getStudentName(String studentId) {
-        String sql = "select * from student where student_id =?";
+    public  String getName(String studentId) throws SQLException {
+
         String SName = null;
-        try {
+       /* String sql = "select * from student where student_id =?";
+
             Connection connection = DbConnnection.getInstance().getConnection();
             PreparedStatement pstm = connection.prepareStatement(sql);
-            pstm.setObject(1,studentId);
-            ResultSet resultSet = pstm.executeQuery();
+            pstm.setObject(1,studentId);*/
+            ResultSet resultSet = SQLUtil.execute("select * from student where student_id =?",studentId);
             if (resultSet.next()){
                 SName = resultSet.getString("first_name")+" "+resultSet.getString("last_name");
             }
             return SName;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
 
     }
 
-    public  String getStudentId(String NIC) {
-        String sql ="select * from student where NIC = ?";
-        Connection connection = null;
-        String id =null;
+    public  String getId(String NIC) throws SQLException {
 
-        try {
+        String id =null;
+        /*String sql ="select * from student where NIC = ?";
+        Connection connection = null;
+
+
             connection = DbConnnection.getInstance().getConnection();
             PreparedStatement pstm = connection.prepareStatement(sql);
-            pstm.setObject(1,NIC);
-            ResultSet resultSet = pstm.executeQuery();
+            pstm.setObject(1,NIC);*/
+            ResultSet resultSet = SQLUtil.execute("select * from student where NIC = ?",NIC);
             if (resultSet.next()){
                 return id = resultSet.getString("student_id");
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
         return id;
 
     }
 
-    public  boolean updateStudent(String nic, String firstname, String lastname, String height, String weight, String dateOfBirth, String bloodGroup, String contactNo, String address, String vehicleClassId, String inputNIC) {
-        String sql = "update student set NIC =?,first_name =?, last_name = ?, height =?, weight_kg =?, date_of_birth =?, blood_group =?, contact_no =?, address =?,vehicle_class_id =? where NIC = ?";
-        try {
+    public  boolean updateStudent(String nic, String firstname, String lastname, String height, String weight, String dateOfBirth, String bloodGroup, String contactNo, String address, String vehicleClassId, String inputNIC) throws SQLException {
+        /*String sql = "update student set NIC =?,first_name =?, last_name = ?, height =?, weight_kg =?, date_of_birth =?, blood_group =?, contact_no =?, address =?,vehicle_class_id =? where NIC = ?";
+
             Connection connection = DbConnnection.getInstance().getConnection();
             PreparedStatement pstm = connection.prepareStatement(sql);
             pstm.setObject(1,nic);
@@ -155,11 +153,9 @@ public class StudentDAOImpl implements StudentDAO {
             pstm.setObject(8,contactNo);
             pstm.setObject(9,address);
             pstm.setObject(10,vehicleClassId);
-            pstm.setObject(11,inputNIC);
+            pstm.setObject(11,inputNIC);*/
 
-            return pstm.executeUpdate()>0;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+            return SQLUtil.execute("update student set NIC =?,first_name =?, last_name = ?, height =?, weight_kg =?, date_of_birth =?, blood_group =?, contact_no =?, address =?,vehicle_class_id =? where NIC = ?",nic,firstname,lastname,height,weight,dateOfBirth,bloodGroup,contactNo,address,vehicleClassId,inputNIC);
+
     }
 }

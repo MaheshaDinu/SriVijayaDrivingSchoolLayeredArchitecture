@@ -96,41 +96,46 @@ public class StudentEditFormController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        String inputNIC = txtNICInput.getText();
-        String NIC = txtNIC.getText();
-        String firstname = txtFirstName.getText();
-        String lastname = txtLastName.getText();
-        String height = txtHeight.getText();
-        String weight = txtWeight.getText();
-        String dateOfBirth = txtDOB.getText();
-        String bloodGroup = txtBloodGroup.getText();
-        String contactNo = txtContactNo.getText();
-        String address = txtAddress.getText();
-        String vehicleClassId = vehicleClassDAO.getId(lblVehicleClass.getText());
+        try {
+            String inputNIC = txtNICInput.getText();
+            String NIC = txtNIC.getText();
+            String firstname = txtFirstName.getText();
+            String lastname = txtLastName.getText();
+            String height = txtHeight.getText();
+            String weight = txtWeight.getText();
+            String dateOfBirth = txtDOB.getText();
+            String bloodGroup = txtBloodGroup.getText();
+            String contactNo = txtContactNo.getText();
+            String address = txtAddress.getText();
+            String vehicleClassId = vehicleClassDAO.getId(lblVehicleClass.getText());
 
-        Pattern phonePattern = Pattern.compile("^\\+94\\d{9}$");
-        Pattern datePattern = Pattern.compile("^(?:(?:19|20)\\d\\d)-(?:0[1-9]|1[0-2])-(?:0[1-9]|1\\d|2\\d|3[01])$");
-        Pattern NICPattern = Pattern.compile("^([0-9]{9}[x|X|v|V]|[0-9]{12})$");
+            Pattern phonePattern = Pattern.compile("^\\+94\\d{9}$");
+            Pattern datePattern = Pattern.compile("^(?:(?:19|20)\\d\\d)-(?:0[1-9]|1[0-2])-(?:0[1-9]|1\\d|2\\d|3[01])$");
+            Pattern NICPattern = Pattern.compile("^([0-9]{9}[x|X|v|V]|[0-9]{12})$");
 
-        if (isValidInput(NICPattern,phonePattern,datePattern)) {
+            if (isValidInput(NICPattern, phonePattern, datePattern)) {
 
-            boolean isUpdated = studentDAO.updateStudent(NIC, firstname, lastname, height, weight, dateOfBirth, bloodGroup, contactNo, address, vehicleClassId, inputNIC);
-            if (isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Changes Saved!").show();
-                txtNIC.setText("");
-                txtFirstName.setText("");
-                txtLastName.setText("");
-                txtHeight.setText("");
-                txtWeight.setText("");
-                txtDOB.setText("");
-                txtBloodGroup.setText("");
-                txtContactNo.setText("+94");
-                txtAddress.setText("");
-                lblVehicleClass.setText("");
-                txtNICInput.setText("");
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Changes Not Saved!").show();
+
+                boolean isUpdated = studentDAO.updateStudent(NIC, firstname, lastname, height, weight, dateOfBirth, bloodGroup, contactNo, address, vehicleClassId, inputNIC);
+                if (isUpdated) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Changes Saved!").show();
+                    txtNIC.setText("");
+                    txtFirstName.setText("");
+                    txtLastName.setText("");
+                    txtHeight.setText("");
+                    txtWeight.setText("");
+                    txtDOB.setText("");
+                    txtBloodGroup.setText("");
+                    txtContactNo.setText("+94");
+                    txtAddress.setText("");
+                    lblVehicleClass.setText("");
+                    txtNICInput.setText("");
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Changes Not Saved!").show();
+                }
             }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
         }
 
     }
@@ -166,7 +171,7 @@ public class StudentEditFormController {
     void btnSearchOnAction(ActionEvent event) {
         String NIC = txtNICInput.getText();
         try {
-            Student student = studentDAO.getStudent(NIC);
+            Student student = studentDAO.get(NIC);
             if (student !=null){
                 txtNIC.setText(student.getNIC());
                 txtFirstName.setText(student.getFirstName());

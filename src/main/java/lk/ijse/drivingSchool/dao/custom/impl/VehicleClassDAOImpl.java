@@ -3,6 +3,7 @@ package lk.ijse.drivingSchool.dao.custom.impl;
 import lk.ijse.drivingSchool.Db.DbConnnection;
 import lk.ijse.drivingSchool.dao.SQLUtil;
 import lk.ijse.drivingSchool.dao.custom.VehicleClassDAO;
+import lk.ijse.drivingSchool.entity.VehicleClass;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,6 +44,36 @@ public class VehicleClassDAOImpl implements VehicleClassDAO {
             classList.add(resultSet.getString("vehicle_class"));
         }
         return classList;
+    }
+
+    @Override
+    public ArrayList<VehicleClass> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public boolean save(VehicleClass entity) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public boolean delete(String nic) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public VehicleClass get(String nic) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public String getNextId() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public String getName(String id) {
+        return null;
     }
 
     public  String getId(String vehicleClass) throws SQLException {

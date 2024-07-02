@@ -43,18 +43,18 @@ public class StudentRegistrationBOImpl implements StudentRegistrationBO {
         try {
         boolean isStudentSaved = false;
 
-            isStudentSaved = studentDAO.saveStudent(student);
+            isStudentSaved = studentDAO.save(student);
 
         if (isStudentSaved){
             String amount = initialPayment;
             String date = String.valueOf(LocalDate.now());
-            String studentId= studentDAO.getNextStudentId();
+            String studentId= studentDAO.getNextId();
             String vehicleClassId= vcid;
 
             String userId = uId;
 
             Payment payment = new Payment(amount,date,studentId,vehicleClassId,userId);
-            boolean isPaymentSaved = paymentDAO.savePayment(payment);
+            boolean isPaymentSaved = paymentDAO.save(payment);
             if (isPaymentSaved){
                 connection.commit();
                 return true;

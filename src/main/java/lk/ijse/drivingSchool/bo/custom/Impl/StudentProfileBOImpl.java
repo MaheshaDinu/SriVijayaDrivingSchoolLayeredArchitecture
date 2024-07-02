@@ -29,7 +29,7 @@ public class StudentProfileBOImpl implements StudentProfileBO {
     }
     public  String getStudentId(String NIC) {
 
-        return studentDAO.getStudentId(NIC);
+        return studentDAO.getId(NIC);
 
     }
     public  String getDaysAttended(String studentId) throws SQLException {
