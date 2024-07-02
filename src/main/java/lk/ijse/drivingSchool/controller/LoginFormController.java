@@ -12,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import lk.ijse.drivingSchool.bo.custom.Impl.LoginBOImpl;
+import lk.ijse.drivingSchool.bo.custom.LoginBO;
 import lk.ijse.drivingSchool.dao.custom.UserDAO;
 import lk.ijse.drivingSchool.dao.custom.impl.UserDAOImpl;
 import lk.ijse.drivingSchool.entity.User;
@@ -29,7 +31,7 @@ public class LoginFormController {
 
     @FXML
     private TextField txtUsername;
-    UserDAO userDAO = new UserDAOImpl();
+    LoginBO loginBO = new LoginBOImpl();
 
 
 
@@ -44,7 +46,7 @@ public class LoginFormController {
 
             try {
 
-                User user = userDAO.userNameCheck(userName);
+                User user = loginBO.userNameCheck(userName);
                 if (user.getUserName().equals(userName)) {
                     String dbpw = user.getPassword();
                     if (dbpw.equals(password)) {
