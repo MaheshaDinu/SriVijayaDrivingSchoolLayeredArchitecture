@@ -27,7 +27,7 @@ public class StudentProfileBOImpl implements StudentProfileBO {
         return vehicleClassDAO.getVehicleClass(vehicleClassId);
 
     }
-    public  String getStudentId(String NIC) {
+    public  String getStudentId(String NIC) throws SQLException {
 
         return studentDAO.getId(NIC);
 

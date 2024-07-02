@@ -16,6 +16,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import lk.ijse.drivingSchool.bo.custom.Impl.StudentBOImpl;
+import lk.ijse.drivingSchool.bo.custom.StudentBO;
 import lk.ijse.drivingSchool.dao.custom.StudentDAO;
 import lk.ijse.drivingSchool.dao.custom.VehicleClassDAO;
 import lk.ijse.drivingSchool.dao.custom.impl.StudentDAOImpl;
@@ -53,8 +55,7 @@ public class StudentsFormController {
     private List<Student> studentList = new ArrayList<>();
 
     public BorderPane borderPane;
-    StudentDAO studentDAO = new StudentDAOImpl();
-    VehicleClassDAO vehicleClassDAO = new VehicleClassDAOImpl();
+    StudentBO studentBO = new StudentBOImpl();
 
 
 
@@ -84,9 +85,9 @@ public class StudentsFormController {
     private void loadStudentTable(){
 
         try {
-             studentList = studentDAO.getAllStudents();
+             studentList = studentBO.getAll();
             for (Student s : studentList){
-                String id = studentDAO.getStudentId(s.getNIC());
+                String id = studentBO.getId(s.getNIC());
                 String NIC = s.getNIC();
 
                 String vehicleClassId = s.getVehicleClassId();
@@ -99,7 +100,7 @@ public class StudentsFormController {
                 btnProfile.setTextFill(Color.WHITE);
                 btnProfile.setOnAction(event -> handleProfileButtonClick(s));
 
-                StudentTm studentTm = new StudentTm(id, NIC, s.getFullName(), vehicleClassDAO.getVehicleClass(vehicleClassId), btnProfile);
+                StudentTm studentTm = new StudentTm(id, NIC, s.getFullName(), studentBO.getVehicleClass(vehicleClassId), btnProfile);
                 studentTmObservableList.add(studentTm);
             }
             tblStudentTable.setItems(studentTmObservableList);
