@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
 
+import lk.ijse.drivingSchool.bo.custom.Impl.StudentEditBOImpl;
+import lk.ijse.drivingSchool.bo.custom.StudentEditBO;
 import lk.ijse.drivingSchool.dao.custom.StudentDAO;
 import lk.ijse.drivingSchool.dao.custom.VehicleClassDAO;
 import lk.ijse.drivingSchool.dao.custom.impl.StudentDAOImpl;
@@ -70,8 +72,8 @@ public class StudentEditFormController {
 
     @FXML
     private TextField txtWeight;
-    StudentDAO studentDAO = new StudentDAOImpl();
-    VehicleClassDAO vehicleClassDAO = new VehicleClassDAOImpl();
+    StudentEditBO studentEditBO = new StudentEditBOImpl();
+
 
     public void initialize(){
         getVehicleClass();
@@ -83,7 +85,7 @@ public class StudentEditFormController {
         ObservableList<String> obList = FXCollections.observableArrayList();
 
         try {
-            List<String> vehicleClassList = vehicleClassDAO.getAllVehicleClass();
+            List<String> vehicleClassList = studentEditBO.getAllVehicleClass();
             for (String vehicleClass : vehicleClassList){
                 obList.add(vehicleClass);
             }
@@ -107,7 +109,7 @@ public class StudentEditFormController {
             String bloodGroup = txtBloodGroup.getText();
             String contactNo = txtContactNo.getText();
             String address = txtAddress.getText();
-            String vehicleClassId = vehicleClassDAO.getId(lblVehicleClass.getText());
+            String vehicleClassId = studentEditBO.getId(lblVehicleClass.getText());
 
             Pattern phonePattern = Pattern.compile("^\\+94\\d{9}$");
             Pattern datePattern = Pattern.compile("^(?:(?:19|20)\\d\\d)-(?:0[1-9]|1[0-2])-(?:0[1-9]|1\\d|2\\d|3[01])$");
@@ -116,7 +118,7 @@ public class StudentEditFormController {
             if (isValidInput(NICPattern, phonePattern, datePattern)) {
 
 
-                boolean isUpdated = studentDAO.updateStudent(NIC, firstname, lastname, height, weight, dateOfBirth, bloodGroup, contactNo, address, vehicleClassId, inputNIC);
+                boolean isUpdated = studentEditBO.updateStudent(NIC, firstname, lastname, height, weight, dateOfBirth, bloodGroup, contactNo, address, vehicleClassId, inputNIC);
                 if (isUpdated) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Changes Saved!").show();
                     txtNIC.setText("");
@@ -171,7 +173,7 @@ public class StudentEditFormController {
     void btnSearchOnAction(ActionEvent event) {
         String NIC = txtNICInput.getText();
         try {
-            Student student = studentDAO.get(NIC);
+            Student student = studentEditBO.get(NIC);
             if (student !=null){
                 txtNIC.setText(student.getNIC());
                 txtFirstName.setText(student.getFirstName());
@@ -182,7 +184,7 @@ public class StudentEditFormController {
                 txtBloodGroup.setText(student.getBloodGroup());
                 txtContactNo.setText(student.getContactNo());
                 txtAddress.setText(student.getAddress());
-                lblVehicleClass.setText(vehicleClassDAO.getVehicleClass(student.getVehicleClassId()));
+                lblVehicleClass.setText(studentEditBO.getVehicleClass(student.getVehicleClassId()));
             }else {
                 new Alert(Alert.AlertType.ERROR, "NIC Does Not Exist!").show();
             }
