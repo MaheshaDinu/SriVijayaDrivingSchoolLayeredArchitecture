@@ -60,8 +60,13 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public String getId(String NIC) throws SQLException {
-        return null;
+    public String getId(String contactNo) throws SQLException {
+        String id = null;
+        ResultSet resultSet = SQLUtil.execute("select * from user where contact_no =?",contactNo);
+        if (resultSet.next()){
+            id = resultSet.getString("user_id");
+        }
+        return id;
     }
 
     public  User userNameCheck(String userName) throws SQLException {
