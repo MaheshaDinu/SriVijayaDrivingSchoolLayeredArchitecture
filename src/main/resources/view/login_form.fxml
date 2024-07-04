@@ -41,7 +41,7 @@
             </Rectangle>
             <ImageView fitHeight="278.0" fitWidth="449.0" layoutX="76.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../resources/images/automobile-1300231_1280.png" />
+                  <Image url="@../images/automobile-1300231_1280.png" />
                </image>
             </ImageView>
             <Label layoutX="138.0" layoutY="141.0" prefHeight="178.0" prefWidth="346.0" text="Sri Vijaya" textAlignment="CENTER" textFill="#0077ff">
@@ -62,7 +62,7 @@
          <children>
             <ImageView fitHeight="740.0" fitWidth="471.0" layoutX="231.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/login%202.png" />
+                  <Image url="@images/login%202.png" />
                </image>
             </ImageView>
             <Label layoutX="258.0" layoutY="164.0" prefHeight="68.0" prefWidth="130.0" text="Log in" textAlignment="CENTER">

@@ -18,10 +18,6 @@ import javafx.stage.Stage;
 
 import lk.ijse.drivingSchool.bo.custom.Impl.StudentBOImpl;
 import lk.ijse.drivingSchool.bo.custom.StudentBO;
-import lk.ijse.drivingSchool.dao.custom.StudentDAO;
-import lk.ijse.drivingSchool.dao.custom.VehicleClassDAO;
-import lk.ijse.drivingSchool.dao.custom.impl.StudentDAOImpl;
-import lk.ijse.drivingSchool.dao.custom.impl.VehicleClassDAOImpl;
 import lk.ijse.drivingSchool.entity.Student;
 import lk.ijse.drivingSchool.entity.User;
 
@@ -112,7 +108,7 @@ public class StudentsFormController {
 
     private void handleProfileButtonClick(Student student)  {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/drivingSchool/view/studentprofile_form.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/studentprofile_form.fxml"));
 
             Parent rootNode = loader.load();
 
@@ -136,7 +132,7 @@ public class StudentsFormController {
     @FXML
     void btnStudentEditOnAction(ActionEvent event) {
         try {
-            AnchorPane root = FXMLLoader.load(getClass().getResource("/lk/ijse/drivingSchool/view/studentedit_form.fxml"));
+            AnchorPane root = FXMLLoader.load(getClass().getResource("/view/studentedit_form.fxml"));
             borderPane.setCenter(root);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -146,7 +142,7 @@ public class StudentsFormController {
     @FXML
     void btnStudentRegisterOnAction(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/lk/ijse/drivingSchool/view/studentregistration_form.fxml"));
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/studentregistration_form.fxml"));
             Parent rootNode = loader.load();
             StudentRegistrationFormController studentRegistrationFormController =loader.getController();
 
@@ -161,7 +157,7 @@ public class StudentsFormController {
 
     @FXML
     void btnStudentRemoveOnAction(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/lk/ijse/drivingSchool/view/studentremove_form.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/view/studentremove_form.fxml"));
         try {
             Parent rootNode = loader.load();
             StudentRemoveFormController studentRemoveFormController = loader.getController();

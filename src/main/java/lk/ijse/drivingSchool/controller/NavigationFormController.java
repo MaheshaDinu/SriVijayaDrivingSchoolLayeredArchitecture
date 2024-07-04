@@ -48,7 +48,7 @@ public class NavigationFormController {
 
     @FXML
     public void initialize(User user) throws IOException, SQLException {
-        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/lk/ijse/drivingSchool/view/dashboard_form.fxml"));
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/dashboard_form.fxml"));
         borderPane.setCenter(rootNode);
         getName(user);
         this.user = user;
@@ -61,14 +61,14 @@ public class NavigationFormController {
 
     @FXML
     void btnDashboardOnAction(ActionEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/lk/ijse/drivingSchool/view/dashboard_form.fxml"));
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/dashboard_form.fxml"));
         borderPane.setCenter(rootNode);
 
     }
 
     @FXML
     void btnExamOnAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/drivingSchool/view/exam_form.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/exam_form.fxml"));
         Parent rootNode = loader.load();
         ExamFormController examFormController = loader.getController();
         examFormController.initialize(borderPane);
@@ -79,7 +79,7 @@ public class NavigationFormController {
 
     @FXML
     void btnInstructorOnAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/drivingSchool/view/instructor_form.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/instructor_form.fxml"));
         Parent rootNode = loader.load();
         InstructorFormController instructorFormController = loader.getController();
         instructorFormController.initialize(user,borderPane);
@@ -89,7 +89,7 @@ public class NavigationFormController {
 
     @FXML
     void btnLogOutOnAction(ActionEvent event) throws IOException {
-        BorderPane rootNode = FXMLLoader.load(this.getClass().getResource("/lk/ijse/drivingSchool/view/login_form.fxml"));
+        BorderPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/login_form.fxml"));
 
         Scene scene =new Scene(rootNode);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -102,7 +102,7 @@ public class NavigationFormController {
 
     @FXML
     void btnPaymentsOnAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/drivingSchool/view/payment_form.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/payment_form.fxml"));
         Parent rootNode = loader.load();
         PaymentFormController paymentFormController = loader.getController();
         paymentFormController.initialize(user,borderPane);
@@ -113,7 +113,7 @@ public class NavigationFormController {
 
     @FXML
     void btnAttendanceOnAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/drivingSchool/view/attendance_form.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/attendance_form.fxml"));
         Parent rootNode = loader.load();
         AttendanceFormController attendanceFormController = loader.getController();
         attendanceFormController.initialize(user,borderPane);
@@ -124,7 +124,7 @@ public class NavigationFormController {
 
     @FXML
     void btnScheduleOnAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/drivingSchool/view/lessonschedule_form.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/lessonschedule_form.fxml"));
         Parent rootNode = loader.load();
         LessonScheduleFormController lessonScheduleFormController = loader.getController();
         lessonScheduleFormController.initialize(user,borderPane);
@@ -135,7 +135,7 @@ public class NavigationFormController {
 
     @FXML
     void btnStudentsOnAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/drivingSchool/view/students_form.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/students_form.fxml"));
         Parent rootNode = loader.load();
         StudentsFormController studentsFormController = loader.getController();
         studentsFormController.initialize(user,borderPane);
@@ -146,7 +146,7 @@ public class NavigationFormController {
 
     @FXML
     void btnVehicleOnAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/drivingSchool/view/vehicle_form.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/vehicle_form.fxml"));
         Parent rootNode = loader.load();
         VehicleFormController vehicleFormController = loader.getController();
         vehicleFormController.initialize(user,borderPane);

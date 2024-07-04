@@ -14,8 +14,6 @@ import javafx.stage.Stage;
 
 import lk.ijse.drivingSchool.bo.custom.Impl.LoginBOImpl;
 import lk.ijse.drivingSchool.bo.custom.LoginBO;
-import lk.ijse.drivingSchool.dao.custom.UserDAO;
-import lk.ijse.drivingSchool.dao.custom.impl.UserDAOImpl;
 import lk.ijse.drivingSchool.entity.User;
 
 import java.io.IOException;
@@ -54,7 +52,7 @@ public class LoginFormController {
 
 
                         try {
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/drivingSchool/view/navigation_form.fxml"));
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/navigation_form.fxml"));
                             Parent root = loader.load();
                             NavigationFormController navigationFormController = loader.getController();
                             navigationFormController.initialize(user);
@@ -92,7 +90,7 @@ public class LoginFormController {
 
     @FXML
     void linkRegisterOnAction(ActionEvent event) throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/lk/ijse/drivingSchool/view/registration_form.fxml"));
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/registration_form.fxml"));
 
         Scene scene =new Scene(rootNode);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
