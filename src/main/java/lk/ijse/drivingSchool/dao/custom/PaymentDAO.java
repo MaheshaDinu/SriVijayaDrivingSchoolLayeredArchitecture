@@ -18,4 +18,5 @@ public interface PaymentDAO extends CrudDAO<Payment> {
     public  boolean delete(String date, String studentId, String amount) throws SQLException;
 
     public  String getAllStudentPayment(String studentId) throws SQLException;
+    public String getPaymentId(String amount,String date,String studentId) throws SQLException;
 }
