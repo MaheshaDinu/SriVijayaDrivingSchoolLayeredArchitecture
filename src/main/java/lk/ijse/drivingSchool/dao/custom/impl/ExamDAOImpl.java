@@ -71,7 +71,8 @@ public class ExamDAOImpl implements ExamDAO {
         return pstm.executeUpdate()>0;
     }
 
-    public  Exam getFutureWrittenExams() throws SQLException {
+    public  ArrayList<Exam> getFutureWrittenExams() throws SQLException {
+        ArrayList<Exam>exams = new ArrayList<>();
         Exam exam = null;
         String now = String.valueOf(LocalDate.now());
         /*String sql ="select * from writtenExam where date >= ?";
@@ -81,12 +82,14 @@ public class ExamDAOImpl implements ExamDAO {
             ResultSet resultSet = SQLUtil.execute("select * from writtenExam where date >= ?",now);
         if (resultSet.next()){
             exam = new Exam(resultSet.getString("date"),resultSet.getString("time"));
+            exams.add(exam);
         }
-            return exam;
+            return exams;
 
     }
 
-    public  Exam getFuturePracticalExams() throws SQLException {
+    public  ArrayList<Exam> getFuturePracticalExams() throws SQLException {
+        ArrayList<Exam>exams = new ArrayList<>();
         Exam exam = null;
         String now = String.valueOf(LocalDate.now());
         /*String sql ="select * from practicalExam where date >= ?";
@@ -97,8 +100,9 @@ public class ExamDAOImpl implements ExamDAO {
             ResultSet resultSet = SQLUtil.execute("select * from practicalExam where date >= ?",now);
         if (resultSet.next()){
             exam = new Exam(resultSet.getString("date"),resultSet.getString("time"));
+            exams.add(exam);
         }
-            return exam;
+            return exams;
 
     }
 

@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public interface ExamDAO extends CrudDAO<Exam> {
     public Exam getNextPracticalExam() throws SQLException ;
@@ -20,7 +21,7 @@ public interface ExamDAO extends CrudDAO<Exam> {
 
     public  boolean savePracticalExam(Exam exam) throws SQLException ;
 
-    public  Exam getFutureWrittenExams() throws SQLException ;
+    public ArrayList<Exam> getFutureWrittenExams() throws SQLException ;
 
-    public  Exam getFuturePracticalExams() throws SQLException ;
+    public  ArrayList<Exam> getFuturePracticalExams() throws SQLException ;
 }

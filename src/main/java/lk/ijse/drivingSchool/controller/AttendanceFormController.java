@@ -8,15 +8,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import lk.ijse.drivingSchool.Repository.AttendanceRepo;
-import lk.ijse.drivingSchool.Repository.LessonRepo;
-import lk.ijse.drivingSchool.Repository.StudentRepo;
+
 import lk.ijse.drivingSchool.bo.custom.AttendanceBO;
 import lk.ijse.drivingSchool.bo.custom.Impl.AttendanceBOImpl;
 import lk.ijse.drivingSchool.entity.Attendance;
 import lk.ijse.drivingSchool.entity.Lesson;
 import lk.ijse.drivingSchool.entity.Student;
-import lk.ijse.drivingSchool.model.Attendance;
+
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
