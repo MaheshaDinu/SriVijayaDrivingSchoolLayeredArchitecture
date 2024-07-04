@@ -14,6 +14,7 @@ import lk.ijse.drivingSchool.bo.custom.Impl.AttendanceBOImpl;
 import lk.ijse.drivingSchool.entity.Attendance;
 import lk.ijse.drivingSchool.entity.Lesson;
 import lk.ijse.drivingSchool.entity.Student;
+import lk.ijse.drivingSchool.entity.User;
 
 
 import java.sql.ResultSet;
@@ -55,7 +56,7 @@ public class AttendanceFormController {
     private String studentId;
     AttendanceBO attendanceBO = new AttendanceBOImpl();
 
-    public void initialize(ResultSet resultSet, BorderPane borderPane) {
+    public void initialize(User user, BorderPane borderPane) {
         lblDate.setText(String.valueOf(now));
         getTimes();
         getAMPM();
