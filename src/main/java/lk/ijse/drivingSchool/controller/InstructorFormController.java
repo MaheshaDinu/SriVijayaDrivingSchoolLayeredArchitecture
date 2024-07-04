@@ -10,11 +10,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import lk.ijse.drivingSchool.Repository.InstructorRepo;
 import lk.ijse.drivingSchool.bo.custom.Impl.InstructorBOImpl;
 import lk.ijse.drivingSchool.bo.custom.InstructorBO;
 import lk.ijse.drivingSchool.entity.Instructor;
-import lk.ijse.drivingSchool.model.tableModel.InstructorTm;
 import lk.ijse.drivingSchool.view.tdm.InstructorTm;
 
 import java.io.IOException;
