@@ -16,4 +16,5 @@ public interface LessonDAO extends CrudDAO<Lesson> {
     public  Lesson getLesson(String date, String time) throws SQLException ;
 
     public  boolean delete(String date, String time) throws SQLException ;
+    public String getLessonId(String date,String time) throws SQLException;
 }

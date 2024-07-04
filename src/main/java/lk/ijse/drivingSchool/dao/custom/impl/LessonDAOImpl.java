@@ -99,4 +99,12 @@ public class LessonDAOImpl implements LessonDAO {
         pstm.setObject(2,time);*/
         return SQLUtil.execute("delete from lesson where date = ? and time = ?",date,time);
     }
+    public String getLessonId(String date,String time) throws SQLException{
+        String id = null;
+        ResultSet resultSet = SQLUtil.execute("select * from lesson where date =? and time = ?",date,time);
+        if (resultSet.next()){
+            id = resultSet.getString("lesson_id");
+        }
+        return id;
+    }
 }
