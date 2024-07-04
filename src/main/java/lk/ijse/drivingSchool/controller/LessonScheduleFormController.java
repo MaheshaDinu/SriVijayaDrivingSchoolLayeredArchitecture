@@ -15,6 +15,7 @@ import lk.ijse.drivingSchool.bo.custom.Impl.LessonScheduleBOImpl;
 import lk.ijse.drivingSchool.bo.custom.LessonScheduleBO;
 import lk.ijse.drivingSchool.entity.Lesson;
 
+import lk.ijse.drivingSchool.entity.User;
 import lk.ijse.drivingSchool.view.tdm.LessonTm;
 
 import java.io.IOException;
@@ -41,7 +42,7 @@ public class LessonScheduleFormController {
     public BorderPane borderPane;
     LessonScheduleBO lessonScheduleBO = new LessonScheduleBOImpl();
 
-    public void initialize(ResultSet resultSet, BorderPane borderPane) {
+    public void initialize(User user, BorderPane borderPane) {
 
         setValueFactory();
         loadLessonTable();

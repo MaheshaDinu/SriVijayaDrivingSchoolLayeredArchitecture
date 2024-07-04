@@ -11,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import lk.ijse.drivingSchool.entity.User;
-import lk.ijse.drivingSchool.model.User;
+
 
 import java.io.IOException;
 import java.sql.SQLException;

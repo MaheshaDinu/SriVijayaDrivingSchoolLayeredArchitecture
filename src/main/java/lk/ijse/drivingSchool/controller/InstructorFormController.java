@@ -13,6 +13,7 @@ import javafx.scene.layout.BorderPane;
 import lk.ijse.drivingSchool.bo.custom.Impl.InstructorBOImpl;
 import lk.ijse.drivingSchool.bo.custom.InstructorBO;
 import lk.ijse.drivingSchool.entity.Instructor;
+import lk.ijse.drivingSchool.entity.User;
 import lk.ijse.drivingSchool.view.tdm.InstructorTm;
 
 import java.io.IOException;
@@ -39,7 +40,7 @@ public class InstructorFormController {
     public BorderPane borderPane;
     InstructorBO instructorBO = new InstructorBOImpl();
     @FXML
-    public void initialize(ResultSet resultSet, BorderPane borderPane) {
+    public void initialize(User user, BorderPane borderPane) {
         setValueFactory();
         loadInstructorTable();
         this.borderPane =borderPane;

@@ -6,11 +6,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import lk.ijse.drivingSchool.Repository.InstructorRepo;
+
 import lk.ijse.drivingSchool.bo.custom.AddInstructorBO;
 import lk.ijse.drivingSchool.bo.custom.Impl.AddInstructorBOImpl;
 import lk.ijse.drivingSchool.entity.Instructor;
-import lk.ijse.drivingSchool.model.Instructor;
+
 
 import java.sql.SQLException;
 import java.util.regex.Pattern;
