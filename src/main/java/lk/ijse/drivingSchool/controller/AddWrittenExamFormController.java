@@ -1,23 +1,24 @@
 package lk.ijse.drivingSchool.controller;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
-import lk.ijse.drivingSchool.bo.custom.AddPracticalExamBO;
-import lk.ijse.drivingSchool.bo.custom.Impl.AddPracticalExamBOImpl;
+import lk.ijse.drivingSchool.bo.custom.AddWrittenExamBO;
+import lk.ijse.drivingSchool.bo.custom.Impl.AddWrittenExamBOImpl;
 import lk.ijse.drivingSchool.entity.Exam;
 
 
 import java.sql.SQLException;
 
-public class AddPracticalExamFormController {
+public class AddWrittenExamFormController {
     @FXML
     private TextField txtDate;
 
     @FXML
     private TextField txtTime;
-    AddPracticalExamBO addPracticalExamBO = new AddPracticalExamBOImpl();
+    AddWrittenExamBO addWrittenExamBO = new AddWrittenExamBOImpl();
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
@@ -27,7 +28,7 @@ public class AddPracticalExamFormController {
         Exam exam = new Exam(date,time);
 
         try {
-            boolean isSaved = addPracticalExamBO.savePracticalExam(exam);
+            boolean isSaved = addWrittenExamBO.saveWrittenExam(exam);
             if (isSaved){
                 new Alert(Alert.AlertType.CONFIRMATION, "Exam Saved!").show();
                 txtDate.setText("");
