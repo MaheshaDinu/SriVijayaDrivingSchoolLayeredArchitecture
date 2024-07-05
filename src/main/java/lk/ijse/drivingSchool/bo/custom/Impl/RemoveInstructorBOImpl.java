@@ -1,6 +1,7 @@
 package lk.ijse.drivingSchool.bo.custom.Impl;
 
 import lk.ijse.drivingSchool.bo.custom.RemoveInstructorBO;
+import lk.ijse.drivingSchool.dao.DAOFactory;
 import lk.ijse.drivingSchool.dao.custom.InstructorDAO;
 import lk.ijse.drivingSchool.dao.custom.impl.InstructorDAOImpl;
 import lk.ijse.drivingSchool.entity.Instructor;
@@ -8,7 +9,7 @@ import lk.ijse.drivingSchool.entity.Instructor;
 import java.sql.SQLException;
 
 public class RemoveInstructorBOImpl implements RemoveInstructorBO {
-    InstructorDAO instructorDAO =new InstructorDAOImpl();
+    InstructorDAO instructorDAO = (InstructorDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.INSTRUCTOR);
     public  boolean delete(String license) throws SQLException{
         return instructorDAO.delete(license);
     }

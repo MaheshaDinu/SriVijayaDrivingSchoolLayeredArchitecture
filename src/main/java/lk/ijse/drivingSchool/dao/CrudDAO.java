@@ -5,7 +5,7 @@ import lk.ijse.drivingSchool.entity.Student;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface CrudDAO <T>{
+public interface CrudDAO <T> extends SuperDAO{
     public ArrayList<T> getAll() throws SQLException;
 
     public  boolean save(T entity) throws SQLException ;

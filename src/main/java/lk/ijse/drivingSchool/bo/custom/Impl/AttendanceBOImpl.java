@@ -1,6 +1,7 @@
 package lk.ijse.drivingSchool.bo.custom.Impl;
 
 import lk.ijse.drivingSchool.bo.custom.AttendanceBO;
+import lk.ijse.drivingSchool.dao.DAOFactory;
 import lk.ijse.drivingSchool.dao.custom.AttendanceDAO;
 import lk.ijse.drivingSchool.dao.custom.LessonDAO;
 import lk.ijse.drivingSchool.dao.custom.StudentDAO;
@@ -14,9 +15,9 @@ import lk.ijse.drivingSchool.entity.Student;
 import java.sql.SQLException;
 
 public class AttendanceBOImpl implements AttendanceBO {
-    LessonDAO lessonDAO = new LessonDAOImpl();
-    StudentDAO studentDAO = new StudentDAOImpl();
-    AttendanceDAO attendanceDAO = new AttendanceDAOImpl();
+    LessonDAO lessonDAO = (LessonDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.LESSON);
+    StudentDAO studentDAO = (StudentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
+    AttendanceDAO attendanceDAO = (AttendanceDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ATTENDANCE);
     public Lesson getLesson(String date, String time) throws SQLException{
         return lessonDAO.getLesson(date,time);
     }

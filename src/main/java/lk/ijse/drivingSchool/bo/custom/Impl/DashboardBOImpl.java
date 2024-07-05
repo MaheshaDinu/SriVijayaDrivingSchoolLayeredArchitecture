@@ -1,6 +1,7 @@
 package lk.ijse.drivingSchool.bo.custom.Impl;
 
 import lk.ijse.drivingSchool.bo.custom.DashboardBO;
+import lk.ijse.drivingSchool.dao.DAOFactory;
 import lk.ijse.drivingSchool.dao.custom.ExamDAO;
 import lk.ijse.drivingSchool.dao.custom.InstructorDAO;
 import lk.ijse.drivingSchool.dao.custom.PaymentDAO;
@@ -17,10 +18,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DashboardBOImpl implements DashboardBO {
-    ExamDAO examDAO = new ExamDAOImpl();
-    PaymentDAO paymentDAO = new PaymentDAOImpl();
-    InstructorDAO instructorDAO = new InstructorDAOImpl();
-    StudentDAO studentDAO =new StudentDAOImpl();
+    ExamDAO examDAO = (ExamDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.EXAM);
+    PaymentDAO paymentDAO = (PaymentDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENT);
+    InstructorDAO instructorDAO = (InstructorDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.INSTRUCTOR);
+    StudentDAO studentDAO = (StudentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
     public Exam getNextPracticalExam() throws SQLException{
         return examDAO.getNextPracticalExam();
     }

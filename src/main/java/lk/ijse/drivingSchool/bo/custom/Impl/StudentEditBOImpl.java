@@ -1,6 +1,7 @@
 package lk.ijse.drivingSchool.bo.custom.Impl;
 
 import lk.ijse.drivingSchool.bo.custom.StudentEditBO;
+import lk.ijse.drivingSchool.dao.DAOFactory;
 import lk.ijse.drivingSchool.dao.custom.StudentDAO;
 import lk.ijse.drivingSchool.dao.custom.VehicleClassDAO;
 import lk.ijse.drivingSchool.dao.custom.impl.StudentDAOImpl;
@@ -11,8 +12,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class StudentEditBOImpl implements StudentEditBO {
-    StudentDAO studentDAO = new StudentDAOImpl();
-    VehicleClassDAO vehicleClassDAO = new VehicleClassDAOImpl();
+    StudentDAO studentDAO = (StudentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
+    VehicleClassDAO vehicleClassDAO = (VehicleClassDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.VEHICLE_CLASS);
     public  boolean updateStudent(String nic, String firstname, String lastname, String height, String weight, String dateOfBirth, String bloodGroup, String contactNo, String address, String vehicleClassId, String inputNIC) throws SQLException{
         return studentDAO.updateStudent(nic,firstname,lastname,height,weight,dateOfBirth,bloodGroup,contactNo,address,vehicleClassId,inputNIC);
     }

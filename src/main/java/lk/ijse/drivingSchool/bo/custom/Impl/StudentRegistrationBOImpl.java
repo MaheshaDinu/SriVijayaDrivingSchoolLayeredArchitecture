@@ -2,6 +2,7 @@ package lk.ijse.drivingSchool.bo.custom.Impl;
 
 import lk.ijse.drivingSchool.Db.DbConnnection;
 import lk.ijse.drivingSchool.bo.custom.StudentRegistrationBO;
+import lk.ijse.drivingSchool.dao.DAOFactory;
 import lk.ijse.drivingSchool.dao.SQLUtil;
 import lk.ijse.drivingSchool.dao.custom.PaymentDAO;
 import lk.ijse.drivingSchool.dao.custom.StudentDAO;
@@ -27,10 +28,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentRegistrationBOImpl implements StudentRegistrationBO {
-    UserDAO userDAO = new UserDAOImpl();
-    VehicleClassDAO vehicleClassDAO = new VehicleClassDAOImpl();
-    StudentDAO studentDAO = new StudentDAOImpl();
-    PaymentDAO paymentDAO = new PaymentDAOImpl();
+    UserDAO userDAO = (UserDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
+    VehicleClassDAO vehicleClassDAO = (VehicleClassDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.VEHICLE_CLASS);
+    StudentDAO studentDAO = (StudentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
+    PaymentDAO paymentDAO = (PaymentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENT);
     public  String getUserId(User user) throws SQLException {
 
 

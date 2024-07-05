@@ -1,6 +1,7 @@
 package lk.ijse.drivingSchool.bo.custom.Impl;
 
 import lk.ijse.drivingSchool.bo.custom.StudentRemoveBO;
+import lk.ijse.drivingSchool.dao.DAOFactory;
 import lk.ijse.drivingSchool.dao.custom.StudentDAO;
 import lk.ijse.drivingSchool.dao.custom.VehicleClassDAO;
 import lk.ijse.drivingSchool.dao.custom.impl.StudentDAOImpl;
@@ -10,8 +11,8 @@ import lk.ijse.drivingSchool.entity.Student;
 import java.sql.SQLException;
 
 public class StudentRemoveBOImpl implements StudentRemoveBO {
-    StudentDAO studentDAO = new StudentDAOImpl();
-    VehicleClassDAO vehicleClassDAO = new VehicleClassDAOImpl();
+    StudentDAO studentDAO = (StudentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
+    VehicleClassDAO vehicleClassDAO = (VehicleClassDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.VEHICLE_CLASS);
 
     public  boolean delete(String nic) throws SQLException{
         return studentDAO.delete(nic);

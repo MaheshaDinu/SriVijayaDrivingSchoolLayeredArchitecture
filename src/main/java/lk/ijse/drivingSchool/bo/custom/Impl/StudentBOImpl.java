@@ -1,6 +1,7 @@
 package lk.ijse.drivingSchool.bo.custom.Impl;
 
 import lk.ijse.drivingSchool.bo.custom.StudentBO;
+import lk.ijse.drivingSchool.dao.DAOFactory;
 import lk.ijse.drivingSchool.dao.custom.StudentDAO;
 import lk.ijse.drivingSchool.dao.custom.VehicleClassDAO;
 import lk.ijse.drivingSchool.dao.custom.impl.StudentDAOImpl;
@@ -11,8 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class StudentBOImpl implements StudentBO {
-    StudentDAO studentDAO = new StudentDAOImpl();
-    VehicleClassDAO vehicleClassDAO = new VehicleClassDAOImpl();
+    StudentDAO studentDAO = (StudentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
+    VehicleClassDAO vehicleClassDAO = (VehicleClassDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.VEHICLE_CLASS);
 
     public ArrayList<Student> getAll() throws SQLException{
         return studentDAO.getAll();

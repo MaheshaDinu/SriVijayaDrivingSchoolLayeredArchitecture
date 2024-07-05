@@ -1,6 +1,7 @@
 package lk.ijse.drivingSchool.bo.custom.Impl;
 
 import lk.ijse.drivingSchool.bo.custom.AddPaymentBO;
+import lk.ijse.drivingSchool.dao.DAOFactory;
 import lk.ijse.drivingSchool.dao.custom.PaymentDAO;
 import lk.ijse.drivingSchool.dao.custom.StudentDAO;
 import lk.ijse.drivingSchool.dao.custom.UserDAO;
@@ -15,10 +16,10 @@ import lk.ijse.drivingSchool.entity.Student;
 import java.sql.SQLException;
 
 public class AddPaymentBOImpl implements AddPaymentBO {
-    UserDAO userDAO = new UserDAOImpl();
-    StudentDAO studentDAO = new StudentDAOImpl();
-    PaymentDAO paymentDAO = new PaymentDAOImpl();
-    VehicleClassDAO vehicleClassDAO = new VehicleClassDAOImpl();
+    UserDAO userDAO = (UserDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
+    StudentDAO studentDAO = (StudentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENT);
+    PaymentDAO paymentDAO = (PaymentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PAYMENT);
+    VehicleClassDAO vehicleClassDAO = (VehicleClassDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.VEHICLE_CLASS);
     public String getId(String contactNo) throws SQLException{
         return userDAO.getId(contactNo);
     }
