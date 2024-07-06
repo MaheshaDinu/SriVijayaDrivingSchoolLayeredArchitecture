@@ -81,6 +81,7 @@ public class LoginFormController {
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, "Sorry Something Went Wrong!");
+                e.printStackTrace();
             }
 
 

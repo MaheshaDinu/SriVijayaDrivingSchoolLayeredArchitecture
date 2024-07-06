@@ -74,9 +74,13 @@ public class UserDAOImpl implements UserDAO {
         Connection connection = DbConnnection.getInstance().getConnection();
         PreparedStatement ptsm = connection.prepareStatement(sql);
         ptsm.setObject(1,userName);*/
+        User user = null;
         ResultSet resultSet = SQLUtil.execute("select * from user where user_name =?",userName);
+        if (resultSet.next()){
+            user=  new User(resultSet.getString("user_name"),resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("contact_no"),resultSet.getString("address"),resultSet.getString("password"));
+        }
 
-        return  new User(resultSet.getString("user_name"),resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("contact_no"),resultSet.getString("address"),resultSet.getString("password"));
+        return user;
     }
 
 
