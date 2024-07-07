@@ -69,7 +69,7 @@ public class PaymentDAOImpl implements PaymentDAO {
     }
     public String getPaymentId(String amount,String date,String studentId) throws SQLException{
         String id=null;
-        ResultSet resultSet=SQLUtil.execute("select * from payment where amount =? and where date =? and student_id =?",amount,date,studentId);
+        ResultSet resultSet=SQLUtil.execute("select * from payment where amount =? and  date =? and student_id =?",amount,date,studentId);
         if (resultSet.next()){
             id = resultSet.getString("payment_id");
         }
