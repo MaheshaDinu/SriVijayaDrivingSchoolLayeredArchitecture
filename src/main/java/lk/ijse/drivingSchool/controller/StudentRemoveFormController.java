@@ -8,6 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.Impl.StudentRemoveBOImpl;
 import lk.ijse.drivingSchool.bo.custom.StudentRemoveBO;
 import lk.ijse.drivingSchool.dao.custom.StudentDAO;
@@ -32,7 +33,7 @@ public class StudentRemoveFormController {
     private TextField txtNIC;
     public BorderPane borderPane;
 
-    StudentRemoveBO studentRemoveBO = new StudentRemoveBOImpl();
+    StudentRemoveBO studentRemoveBO = (StudentRemoveBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENT_REMOVE);
 
     @FXML
     void btnRemoveOnAction(ActionEvent event) {

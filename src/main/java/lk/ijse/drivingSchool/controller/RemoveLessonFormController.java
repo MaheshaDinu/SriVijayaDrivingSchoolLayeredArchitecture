@@ -9,6 +9,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.Impl.RemoveLessonBOImpl;
 import lk.ijse.drivingSchool.bo.custom.RemoveLessonBO;
 
@@ -22,7 +23,7 @@ public class RemoveLessonFormController {
     @FXML
     private TextField txtDate;
     private String time;
-    RemoveLessonBO removeLessonBO = new RemoveLessonBOImpl();
+    RemoveLessonBO removeLessonBO = (RemoveLessonBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.REMOVE_LESSON);
 
 
     public void initialize(){

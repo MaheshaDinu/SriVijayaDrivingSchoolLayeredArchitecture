@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.AddInstructorBO;
 import lk.ijse.drivingSchool.bo.custom.Impl.AddInstructorBOImpl;
 import lk.ijse.drivingSchool.entity.Instructor;
@@ -31,7 +32,7 @@ public class AddInstructorFormController {
 
     @FXML
     private TextField txtLicenseNumber;
-    AddInstructorBO addInstructorBO = new AddInstructorBOImpl();
+    AddInstructorBO addInstructorBO = (AddInstructorBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ADD_INSTRUCTOR);
 
     @FXML
     void btnAddInstructorOnAction(ActionEvent event) {

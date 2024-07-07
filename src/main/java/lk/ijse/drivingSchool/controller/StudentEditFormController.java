@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.Impl.StudentEditBOImpl;
 import lk.ijse.drivingSchool.bo.custom.StudentEditBO;
 import lk.ijse.drivingSchool.dao.custom.StudentDAO;
@@ -72,7 +73,7 @@ public class StudentEditFormController {
 
     @FXML
     private TextField txtWeight;
-    StudentEditBO studentEditBO = new StudentEditBOImpl();
+    StudentEditBO studentEditBO = (StudentEditBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENT_EDIT);
 
 
     public void initialize(){

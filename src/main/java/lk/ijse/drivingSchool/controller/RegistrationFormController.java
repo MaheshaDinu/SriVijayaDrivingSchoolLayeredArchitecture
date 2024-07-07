@@ -12,6 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.Impl.RegistrationBOImpl;
 import lk.ijse.drivingSchool.bo.custom.RegistrationBO;
 import lk.ijse.drivingSchool.entity.User;
@@ -44,7 +45,7 @@ public class RegistrationFormController {
 
     @FXML
     private TextField txtUserName;
-    RegistrationBO registrationBO = new RegistrationBOImpl();
+    RegistrationBO registrationBO = (RegistrationBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.REGISTRATION);
 
     @FXML
     void btnCreateOnAction(ActionEvent event) {

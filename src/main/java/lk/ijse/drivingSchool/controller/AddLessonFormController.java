@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.AddLessonBO;
 import lk.ijse.drivingSchool.bo.custom.Impl.AddLessonBOImpl;
 import lk.ijse.drivingSchool.entity.Lesson;
@@ -37,7 +38,7 @@ public class AddLessonFormController {
     private String vehicleId;
     private String instructorId;
     private String time;
-    AddLessonBO addLessonBO = new AddLessonBOImpl();
+    AddLessonBO addLessonBO = (AddLessonBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ADD_LESSON);
     @FXML
     public void initialize(){
         getInstructors();

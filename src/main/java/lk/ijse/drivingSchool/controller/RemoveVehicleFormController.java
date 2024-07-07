@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.Impl.RemoveVehicleBOImpl;
 import lk.ijse.drivingSchool.bo.custom.RemoveVehicleBO;
 import lk.ijse.drivingSchool.entity.Vehicle;
@@ -26,7 +27,7 @@ public class RemoveVehicleFormController {
 
     @FXML
     private TextField txtLicense;
-    RemoveVehicleBO removeVehicleBO = new RemoveVehicleBOImpl();
+    RemoveVehicleBO removeVehicleBO = (RemoveVehicleBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.REMOVE_VEHICLE);
 
     @FXML
     void btnRemoveOnAction(ActionEvent event) {

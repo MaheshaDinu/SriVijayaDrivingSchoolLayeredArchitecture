@@ -7,6 +7,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.Impl.RemovePaymentBOImpl;
 import lk.ijse.drivingSchool.bo.custom.RemovePaymentBO;
 
@@ -22,7 +23,7 @@ public class RemovePaymentFormController {
 
     @FXML
     private TextField txtNIC;
-    RemovePaymentBO removePaymentBO = new RemovePaymentBOImpl();
+    RemovePaymentBO removePaymentBO = (RemovePaymentBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.REMOVE_PAYMENT);
 
     @FXML
     void btnRemoveOnAction(ActionEvent event) {

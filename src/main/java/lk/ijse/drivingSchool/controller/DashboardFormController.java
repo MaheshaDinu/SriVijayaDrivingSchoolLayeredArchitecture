@@ -3,6 +3,7 @@ package lk.ijse.drivingSchool.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.DashboardBO;
 import lk.ijse.drivingSchool.bo.custom.Impl.DashboardBOImpl;
 import lk.ijse.drivingSchool.entity.Exam;
@@ -33,7 +34,7 @@ public class DashboardFormController {
 
     @FXML
     private Label lblWrittenExamTime;
-    DashboardBO dashboardBO = new DashboardBOImpl();
+    DashboardBO dashboardBO = (DashboardBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.DASHBOARD);
 
     @FXML
     private void initialize(){

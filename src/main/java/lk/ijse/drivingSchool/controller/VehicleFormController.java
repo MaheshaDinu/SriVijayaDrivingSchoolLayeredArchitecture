@@ -9,6 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.Impl.VehicleBOImpl;
 import lk.ijse.drivingSchool.bo.custom.VehicleBO;
 import lk.ijse.drivingSchool.entity.User;
@@ -37,7 +38,7 @@ public class VehicleFormController {
     private TableView<VehicleTm> tblVehicle;
     private ObservableList<VehicleTm> vehicleTmObservableList = FXCollections.observableArrayList();
     public BorderPane borderPane;
-    VehicleBO vehicleBO = new VehicleBOImpl();
+    VehicleBO vehicleBO = (VehicleBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.VEHICLE);
     @FXML
     public void initialize(User user, BorderPane borderPane) {
         setValueFactory();

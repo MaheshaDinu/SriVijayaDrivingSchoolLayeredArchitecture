@@ -10,6 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.Impl.InstructorBOImpl;
 import lk.ijse.drivingSchool.bo.custom.InstructorBO;
 import lk.ijse.drivingSchool.entity.Instructor;
@@ -38,7 +39,7 @@ public class InstructorFormController {
     private TableView<InstructorTm> tblInstructor;
     private ObservableList<InstructorTm> instructorTmObservableList = FXCollections.observableArrayList();
     public BorderPane borderPane;
-    InstructorBO instructorBO = new InstructorBOImpl();
+    InstructorBO instructorBO = (InstructorBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.INSTRUCTOR);
     @FXML
     public void initialize(User user, BorderPane borderPane) {
         setValueFactory();

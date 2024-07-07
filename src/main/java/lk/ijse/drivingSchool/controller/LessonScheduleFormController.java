@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.Impl.LessonScheduleBOImpl;
 import lk.ijse.drivingSchool.bo.custom.LessonScheduleBO;
 import lk.ijse.drivingSchool.entity.Lesson;
@@ -40,7 +41,7 @@ public class LessonScheduleFormController {
     private ObservableList<LessonTm> lessonTmObservableList = FXCollections.observableArrayList();
 
     public BorderPane borderPane;
-    LessonScheduleBO lessonScheduleBO = new LessonScheduleBOImpl();
+    LessonScheduleBO lessonScheduleBO = (LessonScheduleBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.LESSON_SCHEDULE);
 
     public void initialize(User user, BorderPane borderPane) {
 

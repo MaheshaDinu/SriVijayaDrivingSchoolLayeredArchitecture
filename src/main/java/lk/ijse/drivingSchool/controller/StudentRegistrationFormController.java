@@ -14,6 +14,7 @@ import lk.ijse.drivingSchool.API.API;
 import lk.ijse.drivingSchool.Db.DbConnnection;
 
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.Impl.StudentRegistrationBOImpl;
 import lk.ijse.drivingSchool.bo.custom.StudentRegistrationBO;
 import lk.ijse.drivingSchool.dao.custom.UserDAO;
@@ -94,7 +95,7 @@ public class StudentRegistrationFormController {
     public ResultSet resultSet;
     public User user;
 
-    StudentRegistrationBO studentRegistrationBO = new StudentRegistrationBOImpl();
+    StudentRegistrationBO studentRegistrationBO = (StudentRegistrationBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENT_REGISTRATION);
 
     @FXML
     public void initialize(User user, BorderPane borderPane){

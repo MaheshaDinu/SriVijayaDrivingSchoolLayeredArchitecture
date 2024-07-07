@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import lk.ijse.drivingSchool.Db.DbConnnection;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.AddPaymentBO;
 import lk.ijse.drivingSchool.bo.custom.Impl.AddPaymentBOImpl;
 import lk.ijse.drivingSchool.entity.Payment;
@@ -49,7 +50,7 @@ public class AddPaymentFormController {
     private String studentId;
     private String vehicleClassId;
     private ResultSet studentResultSet;
-    AddPaymentBO addPaymentBO = new AddPaymentBOImpl();
+    AddPaymentBO addPaymentBO = (AddPaymentBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ADD_PAYMENT);
 
 
     @FXML

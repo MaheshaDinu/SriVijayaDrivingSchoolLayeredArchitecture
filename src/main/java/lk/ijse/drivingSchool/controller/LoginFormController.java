@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.Impl.LoginBOImpl;
 import lk.ijse.drivingSchool.bo.custom.LoginBO;
 import lk.ijse.drivingSchool.entity.User;
@@ -29,7 +30,7 @@ public class LoginFormController {
 
     @FXML
     private TextField txtUsername;
-    LoginBO loginBO = new LoginBOImpl();
+    LoginBO loginBO = (LoginBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.LOGIN);
 
 
 

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.AddPracticalExamBO;
 import lk.ijse.drivingSchool.bo.custom.Impl.AddPracticalExamBOImpl;
 import lk.ijse.drivingSchool.entity.Exam;
@@ -17,7 +18,7 @@ public class AddPracticalExamFormController {
 
     @FXML
     private TextField txtTime;
-    AddPracticalExamBO addPracticalExamBO = new AddPracticalExamBOImpl();
+    AddPracticalExamBO addPracticalExamBO = (AddPracticalExamBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ADD_PRACTICAL_EXAM);
 
     @FXML
     void btnAddOnAction(ActionEvent event) {

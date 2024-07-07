@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.Impl.PaymentBOImpl;
 import lk.ijse.drivingSchool.bo.custom.PaymentBO;
 import lk.ijse.drivingSchool.entity.Payment;
@@ -44,7 +45,7 @@ public class PaymentFormController {
 
     public BorderPane borderPane;
     User user;
-    PaymentBO paymentBO = new PaymentBOImpl();
+    PaymentBO paymentBO = (PaymentBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENT);
     @FXML
     public void initialize(User user, BorderPane borderPane) {
         setValueFactory();

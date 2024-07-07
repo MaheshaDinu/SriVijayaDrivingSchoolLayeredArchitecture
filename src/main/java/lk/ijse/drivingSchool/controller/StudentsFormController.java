@@ -16,6 +16,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.Impl.StudentBOImpl;
 import lk.ijse.drivingSchool.bo.custom.StudentBO;
 import lk.ijse.drivingSchool.entity.Student;
@@ -51,7 +52,7 @@ public class StudentsFormController {
     private List<Student> studentList = new ArrayList<>();
 
     public BorderPane borderPane;
-    StudentBO studentBO = new StudentBOImpl();
+    StudentBO studentBO = (StudentBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENT);
 
 
 

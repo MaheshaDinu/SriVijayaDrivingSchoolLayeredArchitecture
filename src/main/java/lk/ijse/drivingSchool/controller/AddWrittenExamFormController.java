@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.AddWrittenExamBO;
 import lk.ijse.drivingSchool.bo.custom.Impl.AddWrittenExamBOImpl;
 import lk.ijse.drivingSchool.entity.Exam;
@@ -18,7 +19,7 @@ public class AddWrittenExamFormController {
 
     @FXML
     private TextField txtTime;
-    AddWrittenExamBO addWrittenExamBO = new AddWrittenExamBOImpl();
+    AddWrittenExamBO addWrittenExamBO = (AddWrittenExamBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ADD_WRITTEN_EXAM);
 
     @FXML
     void btnAddOnAction(ActionEvent event) {

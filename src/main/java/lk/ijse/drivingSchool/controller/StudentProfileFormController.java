@@ -3,6 +3,7 @@ package lk.ijse.drivingSchool.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.Impl.StudentProfileBOImpl;
 import lk.ijse.drivingSchool.bo.custom.StudentProfileBO;
 import lk.ijse.drivingSchool.entity.Student;
@@ -50,7 +51,7 @@ public class StudentProfileFormController {
 
     @FXML
     private Label lblWeight;
-    StudentProfileBO studentProfileBO = new StudentProfileBOImpl();
+    StudentProfileBO studentProfileBO = (StudentProfileBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.STUDENT_PROFILE);
 
     @FXML
     public void initialize(Student student){

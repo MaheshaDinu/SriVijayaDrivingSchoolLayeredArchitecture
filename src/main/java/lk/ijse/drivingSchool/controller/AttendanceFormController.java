@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.AttendanceBO;
 import lk.ijse.drivingSchool.bo.custom.Impl.AttendanceBOImpl;
 import lk.ijse.drivingSchool.entity.Attendance;
@@ -54,7 +55,7 @@ public class AttendanceFormController {
     private String time;
     private String lessonId;
     private String studentId;
-    AttendanceBO attendanceBO = new AttendanceBOImpl();
+    AttendanceBO attendanceBO = (AttendanceBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ATTENDANCE);
 
     public void initialize(User user, BorderPane borderPane) {
         lblDate.setText(String.valueOf(now));

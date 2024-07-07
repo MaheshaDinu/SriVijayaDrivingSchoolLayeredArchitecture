@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.AddVehicleBO;
 import lk.ijse.drivingSchool.bo.custom.Impl.AddVehicleBOImpl;
 import lk.ijse.drivingSchool.entity.Vehicle;
@@ -43,7 +44,7 @@ public class AddVehicleFormController {
     private String transmissionType;
     private String fuelType;
     private String availability;
-    AddVehicleBO addVehicleBO = new AddVehicleBOImpl();
+    AddVehicleBO addVehicleBO = (AddVehicleBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ADD_VEHICLE);
     @FXML
     public void initialize(){
         getTransmissionTypes();

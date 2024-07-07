@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
+import lk.ijse.drivingSchool.bo.BOFactory;
 import lk.ijse.drivingSchool.bo.custom.ExamBO;
 import lk.ijse.drivingSchool.bo.custom.Impl.ExamBOImpl;
 import lk.ijse.drivingSchool.entity.Exam;
@@ -41,7 +42,7 @@ public class ExamFormController {
     private TableView<ExamTm> tblWrittenExam;
 
     public BorderPane borderPane;
-    ExamBO examBO = new ExamBOImpl();
+    ExamBO examBO = (ExamBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EXAM);
     @FXML
     public void initialize(BorderPane borderPane) {
         setValueFactoryWrittenExam();
