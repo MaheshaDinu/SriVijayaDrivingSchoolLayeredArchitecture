@@ -78,7 +78,7 @@ public class StudentDAOImpl implements StudentDAO {
             ResultSet resultSet = SQLUtil.execute("select * from student where NIC = ?",nic);
             Student student = null;
             if (resultSet.next()){
-                student =new Student(resultSet.getString("NIC"),resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("height"),resultSet.getString("weight"),resultSet.getString("date_of_birth"),resultSet.getString("blood_group"),resultSet.getString("contact_no"),resultSet.getString("address"),resultSet.getString("user_id"),resultSet.getString("vehicle_class_id"));
+                student =new Student(resultSet.getString("NIC"),resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("height"),resultSet.getString("weight_kg"),resultSet.getString("date_of_birth"),resultSet.getString("blood_group"),resultSet.getString("contact_no"),resultSet.getString("address"),resultSet.getString("user_id"),resultSet.getString("vehicle_class_id"));
 
             }
             return student;
